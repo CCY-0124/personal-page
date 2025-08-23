@@ -1,31 +1,79 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PixelWindow from './PixelWindow';
 import { Github, Linkedin, Mail, Star } from 'lucide-react';
+import RotatingTrailingEffect from './RotatingTrailingEffect';
 
 interface HomeProps {
   onFunStuffClick: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
+export default function Home({ onFunStuffClick }: HomeProps) {
+  // --- Loading Gate ---
+  const [imgReady, setImgReady] = useState(false);
+  const [fontsReady, setFontsReady] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Wait for fonts
+  useEffect(() => {
+    const fonts = (document as any).fonts;
+    if (fonts?.ready) {
+      fonts.ready.then(() => setFontsReady(true));
+    } else {
+      setFontsReady(true);
+    }
+  }, []);
+
+  // When both image + fonts ready, allow content after a tiny delay to avoid flicker
+  useEffect(() => {
+    if (imgReady && fontsReady) {
+      const t = setTimeout(() => setIsReady(true), 250);
+      return () => clearTimeout(t);
+    }
+  }, [imgReady, fontsReady]);
+
   return (
     <div className="home-wrapper">
+      {/* Loading Overlay */}
+      {!isReady && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-black"
+          aria-busy="true"
+          aria-live="polite"
+          role="status"
+        >
+          <div className="flex flex-col items-center gap-4">
+            <div style={{ width: 240, height: 240 }}>
+              <RotatingTrailingEffect
+                size={240}
+                color="#FFD400"
+                durationSec={3}
+                background="transparent"
+                tilt={75}
+                tiltY={0}
+                iconSize={30}
+              />
+            </div>
+            <span style={{ color: '#F7F4C8', fontWeight: 700 }}>Loading…</span>
+          </div>
+        </div>
+      )}
 
-      <div className="home-container">
+      <div className="home-container" aria-hidden={!isReady}>
         <div className="home-window-container">
           {/* Star Icon */}
           <div className="star-icon-container">
-            <Star 
-              size={40} 
+            <Star
+              size={40}
               className="star-icon"
-              style={{ color: '#f6e05e'}}
+              style={{ color: '#f6e05e' }}
               onClick={onFunStuffClick}
             />
             <span className="star-text">Fun Stuff & Blog</span>
           </div>
-          
+
           {/* Pixel Window */}
           <PixelWindow title="Home" theme="yellow">
             <div className="home-content">
@@ -38,54 +86,48 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
                     width={280}
                     height={280}
                     className="avatar-image"
+                    onLoadingComplete={() => setImgReady(true)}
                     onError={(e) => {
-                      // Fallback to emoji if image fails to load
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       target.parentElement!.innerHTML = '<span class="fallback-emoji">👤</span>';
+                      setImgReady(true); // don’t block if it fails
                     }}
                   />
                 </div>
               </div>
-              
+
               {/* Right side - Name and Details */}
               <div className="info-section">
-                <h1 className="name-title">
-                  Tracy Chung
-                </h1>
-                
-                <h2 className="subtitle">
-                  Software Developer
-                </h2>
-                
+                <h1 className="name-title">Tracy Chung</h1>
+
+                <h2 className="subtitle">Software Developer</h2>
+
                 <p className="description">
-                Passionate software developer dedicated to building accessible and inclusive digital experiences, 
-                with a strong focus on front-end development and user experience.
+                  Passionate software developer dedicated to building accessible and inclusive digital experiences,
+                  with a strong focus on front-end development and user experience.
                 </p>
-                
+
                 <div className="social-links">
-                  <a 
-                    href="https://github.com/CCY-0124" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://github.com/CCY-0124"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="social-link github"
                   >
                     <Github size={24} />
                     <span>GitHub</span>
                   </a>
-                  <a 
-                    href="https://www.linkedin.com/in/tracychung0124" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://www.linkedin.com/in/tracychung0124"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="social-link linkedin"
                   >
                     <Linkedin size={24} />
                     <span>LinkedIn</span>
                   </a>
-                  <a 
-                    href="mailto:chuiyingchungccy@gmail.com" 
-                    className="social-link email"
-                  >
+                  <a href="mailto:chuiyingchungccy@gmail.com" className="social-link email">
                     <Mail size={24} />
                     <span>Email</span>
                   </a>
@@ -109,8 +151,6 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
           z-index: 0;
         }
 
-
-
         .home-window-container {
           display: flex;
           flex-direction: column;
@@ -133,7 +173,7 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
         }
 
         .star-text {
-          color: #F7F4C8;
+          color: #f7f4c8;
           font-weight: 600;
           font-size: 12px;
           opacity: 0;
@@ -150,7 +190,8 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
         }
 
         @keyframes starShine {
-          0%, 100% {
+          0%,
+          100% {
             filter: drop-shadow(0 0 12px #fbbf24) drop-shadow(0 0 20px #fbbf24);
           }
           50% {
@@ -166,14 +207,11 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
         .home-container {
           width: 95vw;
           max-width: 1400px;
-          aspect-ratio: 4/3;
+          aspect-ratio: 4 / 3;
           margin: auto;
           padding: 20px;
           position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          inset: 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -261,7 +299,7 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
           transition: all 0.3s ease;
           border: 2px solid transparent;
           background: #333333;
-          color: #FFFFFF;
+          color: #ffffff;
           border-color: #333333;
         }
 
@@ -274,7 +312,7 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
         @media (max-width: 768px) {
           .home-container {
             width: 95vw;
-            aspect-ratio: 3/4;
+            aspect-ratio: 3 / 4;
           }
 
           .home-content {
@@ -313,6 +351,4 @@ const Home: React.FC<HomeProps> = ({ onFunStuffClick }) => {
       `}</style>
     </div>
   );
-};
-
-export default Home;
+}
