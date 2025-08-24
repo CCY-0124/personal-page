@@ -168,7 +168,7 @@ const Skills: React.FC = () => {
 
                  .section-title {
            color: #F7F4C8;
-           font-size: 24px;
+           font-size: 26px;
            font-weight: 700;
            text-align: center;
            margin-bottom: 0;
@@ -210,7 +210,7 @@ const Skills: React.FC = () => {
 
          .category-title {
            color: #F7F4C8;
-           font-size: 18px;
+           font-size: 20px;
            font-weight: 700;
            text-transform: uppercase;
            letter-spacing: 2px;
@@ -275,7 +275,7 @@ const Skills: React.FC = () => {
         /* Tech Skills specific styling */
         .tech-skills-section .skill-name {
           color: #F7F4C8;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 700;
           text-align: center;
           text-transform: uppercase;
@@ -289,7 +289,7 @@ const Skills: React.FC = () => {
         /* Additional Skills specific styling */
         .additional-skills-section .skill-name {
           color: #F7F4C8;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 600;
           text-align: left;
           text-transform: none;
@@ -331,7 +331,7 @@ const Skills: React.FC = () => {
 
          .skill-description {
            color: #F7F4C8;
-           font-size: 14px;
+           font-size: 16px;
            margin: 0;
            opacity: 0.8;
          }
