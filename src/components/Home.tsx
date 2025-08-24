@@ -5,6 +5,7 @@ import Image from 'next/image';
 import PixelWindow from './PixelWindow';
 import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
+import EmailPopup from './EmailPopup';
 
 interface HomeProps {
   onFunStuffClick: () => void;
@@ -15,6 +16,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
   const [imgReady, setImgReady] = useState(false);
   const [fontsReady, setFontsReady] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
 
   // Wait for fonts
   useEffect(() => {
@@ -47,11 +49,11 @@ export default function Home({ onFunStuffClick }: HomeProps) {
           <div className="flex flex-col items-center gap-4">
             <div style={{ width: 240, height: 240 }}>
               <RotatingTrailingEffect
-                size={240}
+                size={400}
                 color="#FFD400"
                 durationSec={3}
                 background="transparent"
-                tilt={75}
+                tilt={100}
                 tiltY={0}
                 iconSize={30}
               />
@@ -127,10 +129,20 @@ export default function Home({ onFunStuffClick }: HomeProps) {
                     <Linkedin size={24} />
                     <span>LinkedIn</span>
                   </a>
-                  <a href="mailto:chuiyingchungccy@gmail.com" className="social-link email">
+                  <button
+                    type="button"
+                    className="social-link email"
+                    onClick={() => setShowEmail(true)}
+                    aria-haspopup="dialog"
+                  >
                     <Mail size={24} />
                     <span>Email</span>
-                  </a>
+                  </button>
+                  <EmailPopup
+                      open={showEmail}
+                      onClose={() => setShowEmail(false)}
+                      email="chuiyingchungccy@gmail.com"
+                    />
                 </div>
               </div>
             </div>
