@@ -1,32 +1,18 @@
 import React from "react";
-import { 
-  SiPython, 
-  SiJavascript, 
-  SiReact, 
-  SiTypescript, 
-  SiNodedotjs,
-  SiHtml5,
-  SiCss3,
-  SiGit,
-  SiMongodb,
-  SiPostgresql,
-  SiNextdotjs,
-  SiTailwindcss
-} from 'react-icons/si';
 
 type OrbitItem = {
   label: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
   bg: string;
   fg: string;
   angle?: number; // initial angle in degrees
 };
 
 type RotatingTrailProps = {
+  className?: string;
   size?: number;          // px
   color?: string;         // ring color
   durationSec?: number;   // seconds per rotation
-  background?: string;    // page bg
+  background?: string;    // spinner bg (keep transparent in overlays)
   tilt?: number;          // 3D tilt angle in degrees (X-axis)
   tiltY?: number;         // optional Y-axis tilt
   iconSize?: number;      // px for each badge
@@ -34,30 +20,23 @@ type RotatingTrailProps = {
 };
 
 export default function RotatingTrailingEffect({
-  size = 220,
+  className,
+  size = 400,
   color = "#FFD400",
   durationSec = 3,
-  background = "#000",
-  tilt = 75,
+  background = "transparent",
+  tilt = 100,
   tiltY = 0,
-  iconSize = 28,
+  iconSize = 40,
   items = [
-    { label: "Python", icon: SiPython, bg: "#3776AB", fg: "#FFD43B", angle: 0 },
-    { label: "JS", icon: SiJavascript, bg: "#F7DF1E", fg: "#000000", angle: 30 },
-    { label: "React", icon: SiReact, bg: "#61DAFB", fg: "#000000", angle: 60 },
-    { label: "TS", icon: SiTypescript, bg: "#3178C6", fg: "#FFFFFF", angle: 90 },
-    { label: "Node", icon: SiNodedotjs, bg: "#339933", fg: "#FFFFFF", angle: 120 },
-    { label: "HTML", icon: SiHtml5, bg: "#E34F26", fg: "#FFFFFF", angle: 150 },
-    { label: "CSS", icon: SiCss3, bg: "#1572B6", fg: "#FFFFFF", angle: 180 },
-    { label: "Git", icon: SiGit, bg: "#F05032", fg: "#FFFFFF", angle: 210 },
-    { label: "Next", icon: SiNextdotjs, bg: "#000000", fg: "#FFFFFF", angle: 240 },
-    { label: "Tailwind", icon: SiTailwindcss, bg: "#06B6D4", fg: "#FFFFFF", angle: 270 },
-    { label: "Mongo", icon: SiMongodb, bg: "#47A248", fg: "#FFFFFF", angle: 300 },
-    { label: "PostgreSQL", icon: SiPostgresql, bg: "#336791", fg: "#FFFFFF", angle: 330 },
+    { label: "Py", bg: "#3776AB", fg: "#FFD43B", angle: 0 },        // Python-ish colors
+    { label: "JS", bg: "#F7DF1E", fg: "#000000", angle: 120 },      // JS
+    { label: "React", bg: "#61DAFB", fg: "#000000", angle: 240 },   // React
   ],
 }: RotatingTrailProps) {
   const borderW = 3; // ring stroke
 
+  // ——— Ring (arc) ———
   const circleStyle: React.CSSProperties = {
     width: size,
     height: size,
@@ -69,6 +48,7 @@ export default function RotatingTrailingEffect({
     position: "relative",
     boxSizing: "border-box",
     transformStyle: "preserve-3d",
+    willChange: "transform",
   };
 
   const radius = size / 2 - iconSize / 2 - borderW / 2; // place badge center on ring
@@ -76,6 +56,7 @@ export default function RotatingTrailingEffect({
   const wrapperTilt: React.CSSProperties = {
     transform: `rotateX(${tilt}deg) rotateY(${tiltY}deg)`,
     transformStyle: "preserve-3d",
+    willChange: "transform",
   };
 
   const orbitCenter: React.CSSProperties = {
@@ -96,46 +77,43 @@ export default function RotatingTrailingEffect({
     fontSize: Math.max(11, Math.round(iconSize * 0.48)),
     fontWeight: 800,
     border: "1px solid #000",
-    borderRadius: 6, // subtle pixel-ish corner
+    borderRadius: 6, // subtle pixel-ish
     userSelect: "none",
-    // Counter-rotate so the labels stay upright while orbiting
+    // Keep labels upright while the ring spins
     animation: `rt-spin-rev ${durationSec}s linear infinite`,
     boxShadow: `0 0 6px rgba(0,0,0,0.35)`,
-    // Keep icons level by counter-rotating the tilt
-    transform: `rotateX(${-tilt}deg)`,
+    willChange: "transform",
+    transform: "translateZ(0)",
   };
 
   return (
     <div
-      className="flex items-center justify-center w-full h-full"
+      className={`flex items-center justify-center w-full h-full ${className || ""}`}
       style={{ background, perspective: 1000 }}
     >
       <div style={wrapperTilt}>
         <div style={circleStyle}>
           {/* Orbiting items */}
-          {items.map((it, idx) => {
-            const IconComponent = it.icon;
-            return (
-              <div key={idx} style={orbitCenter} aria-label={it.label}>
+          {items.map((it, idx) => (
+            <div key={`${it.label}-${idx}`} style={orbitCenter} aria-label={it.label}>
+              <div
+                style={{
+                  transform: `rotate(${it.angle ?? 0}deg) translate(${radius}px)`,
+                  transformOrigin: "0 0",
+                }}
+              >
                 <div
                   style={{
-                    transform: `rotate(${it.angle ?? 0}deg) translate(${radius}px)`,
-                    transformOrigin: "0 0",
+                    ...itemBox,
+                    color: it.fg,
+                    background: it.bg,
                   }}
                 >
-                  <div
-                    style={{
-                      ...itemBox,
-                      color: it.fg,
-                      background: it.bg,
-                    }}
-                  >
-                    <IconComponent size={iconSize * 0.6} />
-                  </div>
+                  {it.label}
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
 

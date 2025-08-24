@@ -15,7 +15,7 @@ export default function LoadingOverlay({
     tip = 'Loading…',
     color = '#FFD400',
     background = 'rgba(10,10,10,0.92)',
-    durationSec = 5
+    durationSec = 60
 }: Props) {
     return (
         <div
@@ -38,7 +38,7 @@ export default function LoadingOverlay({
                         color={color}
                         durationSec={durationSec}
                         background="transparent"  // background handled by overlay
-                        tilt={80}
+                        tilt={100}
                         tiltY={0}
                         iconSize={30}
                     />
