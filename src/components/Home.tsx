@@ -53,7 +53,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
                 color="#FFD400"
                 durationSec={3}
                 background="transparent"
-                tilt={100}
+                tilt={60}
                 tiltY={0}
                 iconSize={30}
               />
