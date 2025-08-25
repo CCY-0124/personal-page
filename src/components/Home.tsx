@@ -6,6 +6,7 @@ import PixelWindow from './PixelWindow';
 import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
 import EmailPopup from './EmailPopup';
+import CloseAttemptPopup from "./CloseAttemptPopup";
 
 interface HomeProps {
   onFunStuffClick: () => void;
@@ -17,6 +18,8 @@ export default function Home({ onFunStuffClick }: HomeProps) {
   const [fontsReady, setFontsReady] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
+  const [attemptCount, setAttemptCount] = useState(0);
+  const [showClosePopup, setShowClosePopup] = useState(false);
 
   // Wait for fonts
   useEffect(() => {
@@ -35,6 +38,25 @@ export default function Home({ onFunStuffClick }: HomeProps) {
       return () => clearTimeout(t);
     }
   }, [imgReady, fontsReady]);
+
+  useEffect(() => {
+    fetch("/api/close-attempts")
+      .then(r => r.json())
+      .then(d => setAttemptCount(d.count))
+      .catch(() => { });
+  }, []);
+
+  const onCloseAttempt = async () => {
+    try {
+      const res = await fetch("/api/close-attempts", { method: "POST" });
+      const data = await res.json();
+      setAttemptCount(data.count);     // 
+      setShowClosePopup(true);
+    } catch {
+      setAttemptCount(c => c + 1);
+      setShowClosePopup(true);
+    }
+  };
 
   return (
     <div className="home-wrapper">
@@ -77,7 +99,12 @@ export default function Home({ onFunStuffClick }: HomeProps) {
           </div>
 
           {/* Pixel Window */}
-          <PixelWindow title="Home" theme="yellow">
+          <PixelWindow title="Home" theme="yellow" onCloseAttempt={onCloseAttempt}>
+            <CloseAttemptPopup
+              open={showClosePopup}
+              onClose={() => setShowClosePopup(false)}
+              count={attemptCount}
+            />
             <div className="home-content">
               {/* Left side - Avatar */}
               <div className="avatar-section">
