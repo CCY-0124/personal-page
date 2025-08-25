@@ -20,7 +20,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
 
   // Wait for fonts
   useEffect(() => {
-    const fonts = (document as any).fonts;
+    const fonts: FontFaceSet | undefined = (document as Document & { fonts?: FontFaceSet }).fonts;
     if (fonts?.ready) {
       fonts.ready.then(() => setFontsReady(true));
     } else {
