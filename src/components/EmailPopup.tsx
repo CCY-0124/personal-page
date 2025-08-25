@@ -37,7 +37,7 @@ export default function EmailPopup({ open, onClose, email }: Props) {
                 theme="yellow"
                 icon={<Mail size={18} />}
                 onClose={() => onClose()}
-                initialPosition={{ x: 1000, y: 500 }}
+                initialPosition={{ x: 800, y: 400 }}
                 className="z-[1000]"
             >
                 <div style={{ color: '#f7f4c8' }}>
