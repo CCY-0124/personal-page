@@ -17,11 +17,32 @@ type WindowState = {
   section: string;
   position: { x: number; y: number };
   zIndex: number;
+  size?: { width: string; height: string };
 };
 
 export default function PersonalPage() {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(1000);
+
+  // Add window size configuration function
+  const getWindowSize = (section: string) => {
+    switch (section) {
+      case 'skills':
+        return { width: '600px', height: '500px' }; 
+      case 'projects':
+        return { width: '900px', height: '700px' }; 
+      case 'about':
+        return { width: '500px', height: '400px' }; 
+      case 'experience':
+        return { width: '750px', height: '550px' }; 
+      case 'certificate':
+        return { width: '650px', height: '500px' }; 
+      case 'funstuff':
+        return { width: '800px', height: '600px' }; 
+      default:
+        return { width: '500px', height: '400px' };
+    }
+  };
 
   const handleSectionChange = (section: string) => {
     // Check if window is already open
@@ -46,6 +67,7 @@ export default function PersonalPage() {
       section,
       position: newPosition,
       zIndex: newZIndex,
+      size: getWindowSize(section), // Add size configuration
     };
 
     setOpenWindows(prev => [...prev, newWindow]);
@@ -148,6 +170,8 @@ export default function PersonalPage() {
           onClose={closeWindow}
           onWindowClick={() => bringWindowToFront(window.id)}
           icon={getSectionIcon(window.section)}
+          width={window.size?.width}
+          height={window.size?.height}
         >
           {renderSectionContent(window.section)}
         </DraggablePixelWindow>
