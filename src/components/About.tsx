@@ -2,13 +2,20 @@
 
 import React from 'react';
 import { User, GraduationCap, Languages, BookOpen, TrendingUp, Palette } from 'lucide-react';
+import Image from 'next/image';
 
 const About: React.FC = () => {
   return (
     <>
       <div className="about-header">
         <div className="avatar-circle">
-          <User size={32} className="avatar-icon" />
+        <Image
+          src="/avatar1.png"
+          alt="Tracy Chung"
+          width={80}
+          height={80}
+          className="avatar-image"
+          />
         </div>
         <h2 className="about-title">About Me</h2>
         <p className="about-tagline">Curious learner, disciplined builder, always mixing skills to create something new.</p>
@@ -88,13 +95,21 @@ const About: React.FC = () => {
         .avatar-circle {
           width: 80px;
           height: 80px;
-          background: #F7F4C8;
+          background:rgb(0, 0, 0);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 16px;
           border: 3px solid #000000;
+          overflow: hidden;
+        }
+
+        .avatar-image {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover;
         }
 
         .avatar-icon {
@@ -222,7 +237,7 @@ const About: React.FC = () => {
           }
 
           .story-text {
-            font-size: 14px;4
+            font-size: 14px;
           }
 
           .info-grid {
