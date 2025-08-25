@@ -12,6 +12,8 @@ type Props = {
   zIndex?: number;
   onWindowClick?: () => void;
   icon?: React.ReactNode;
+  width?: string;
+  height?: string;
 };
 
 export default function DraggablePixelWindow({
@@ -25,6 +27,8 @@ export default function DraggablePixelWindow({
   zIndex = 1000,
   onWindowClick,
   icon,
+  width,
+  height,
 }: Props) {
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -87,12 +91,18 @@ export default function DraggablePixelWindow({
       }}
       onMouseDown={handleMouseDown}
     >
-      <div className="pixel-window">
-                 <div className="titlebar">
-           <div className="title-section">
-             {icon && <span className="title-icon">{icon}</span>}
-             <span className="title">{title}</span>
-           </div>
+      <div 
+        className="pixel-window"
+        style={{
+          width: width,
+          height: height,
+        }}
+      >
+        <div className="titlebar">
+          <div className="title-section">
+            {icon && <span className="title-icon">{icon}</span>}
+            <span className="title">{title}</span>
+          </div>
           <div className="buttons">
             <span 
               className="btn close" 
