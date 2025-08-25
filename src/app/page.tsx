@@ -16,16 +16,20 @@ type WindowState = {
   id: string;
   section: string;
   position: { x: number; y: number };
+  zIndex: number;
 };
 
 export default function PersonalPage() {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
+  const [highestZIndex, setHighestZIndex] = useState(1000);
 
   const handleSectionChange = (section: string) => {
     // Check if window is already open
     const existingWindow = openWindows.find(window => window.section === section);
     if (existingWindow) {
-      return; // Window already open
+      // Bring existing window to front
+      bringWindowToFront(existingWindow.id);
+      return;
     }
 
     // Calculate position for new window (staggered)
@@ -34,13 +38,30 @@ export default function PersonalPage() {
       y: 100 + (openWindows.length * 50),
     };
 
+    const newZIndex = highestZIndex + 1;
+    setHighestZIndex(newZIndex);
+
     const newWindow: WindowState = {
       id: `${section}-${Date.now()}`,
       section,
       position: newPosition,
+      zIndex: newZIndex,
     };
 
     setOpenWindows(prev => [...prev, newWindow]);
+  };
+
+  const bringWindowToFront = (windowId: string) => {
+    const newZIndex = highestZIndex + 1;
+    setHighestZIndex(newZIndex);
+    
+    setOpenWindows(prev => 
+      prev.map(window => 
+        window.id === windowId 
+          ? { ...window, zIndex: newZIndex }
+          : window
+      )
+    );
   };
 
   const closeWindow = (windowId: string) => {
@@ -123,7 +144,9 @@ export default function PersonalPage() {
           title={getSectionTitle(window.section)}
           theme="yellow"
           initialPosition={window.position}
+          zIndex={window.zIndex}
           onClose={closeWindow}
+          onWindowClick={() => bringWindowToFront(window.id)}
           icon={getSectionIcon(window.section)}
         >
           {renderSectionContent(window.section)}
