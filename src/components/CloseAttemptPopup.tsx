@@ -2,6 +2,7 @@
 import React from 'react';
 import { AlertTriangle, Send } from 'lucide-react';
 import DraggablePixelWindow from './DraggablePixelWindow';
+import Image from 'next/image';
 
 type Props = {
     open: boolean;
@@ -36,6 +37,15 @@ export default function CloseAttemptPopup({ open, onClose, count }: Props) {
                 className="z-[1000]"
             >
                 <div style={{ color: '#f7f4c8' }}>
+                    <div className="avatar-container justify-center flex">
+                        <Image
+                        src="/cry.png"
+                        alt="Tracy Chung"
+                        width={200}
+                        height={200}
+                        className="cry-image"
+                        />
+                    </div>
                     <p className="text-lg font-bold mb-2">
                         You are the {toOrdinal(count)} person that tried to close this window.
                     </p>
