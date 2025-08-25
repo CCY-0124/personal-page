@@ -17,7 +17,7 @@ const About: React.FC = () => {
       <div className="about-content">
         <div className="story-section">
           <p className="story-text">
-            I started out teaching myself data analysis and digital drawing, mostly out of curiosity and a love for figuring things out on my own. Later, I decided to go back to school at BCIT to build a stronger computer science foundation and keep pushing myself with new technologies. I'm the kind of person who learns fast, stays disciplined, and isn't afraid of challenges. I like keeping an open mind, trying new ideas, and turning them into something useful. I like combining different skills (coding, data, design, psychology) to create things that are both useful and interesting.
+            I started out teaching myself data analysis and digital drawing, mostly out of curiosity and a love for figuring things out on my own. Later, I decided to go back to school at BCIT to build a stronger computer science foundation and keep pushing myself with new technologies. I&apos;m the kind of person who learns fast, stays disciplined, and isn&apos;t afraid of challenges. I like keeping an open mind, trying new ideas, and turning them into something useful. I like combining different skills (coding, data, design, psychology) to create things that are both useful and interesting.
           </p>
         </div>
         
