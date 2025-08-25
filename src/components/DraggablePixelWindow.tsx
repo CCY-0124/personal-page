@@ -9,6 +9,8 @@ type Props = {
   className?: string;
   onClose: (id: string) => void;
   initialPosition?: { x: number; y: number };
+  zIndex?: number;
+  onWindowClick?: () => void;
   icon?: React.ReactNode;
 };
 
@@ -20,6 +22,8 @@ export default function DraggablePixelWindow({
   className,
   onClose,
   initialPosition = { x: 100, y: 100 },
+  zIndex = 1000,
+  onWindowClick,
   icon,
 }: Props) {
   const [position, setPosition] = useState(initialPosition);
@@ -28,6 +32,11 @@ export default function DraggablePixelWindow({
   const windowRef = useRef<HTMLDivElement>(null);
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    // Bring window to front when clicked
+    if (onWindowClick) {
+      onWindowClick();
+    }
+
     if (e.target === e.currentTarget || (e.target as HTMLElement).closest('.titlebar')) {
       setIsDragging(true);
       const rect = windowRef.current?.getBoundingClientRect();
@@ -73,7 +82,7 @@ export default function DraggablePixelWindow({
         position: 'fixed',
         left: position.x,
         top: position.y,
-        zIndex: 1000,
+        zIndex: zIndex,
         cursor: isDragging ? 'grabbing' : 'default',
       }}
       onMouseDown={handleMouseDown}
