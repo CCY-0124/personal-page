@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Home } from "lucide-react";
 
 type Props = {
@@ -7,6 +7,7 @@ type Props = {
   theme?: "yellow" | "blue";
   children: React.ReactNode;
   className?: string;
+  onCloseAttempt?: () => void;
 };
 
 export default function PixelWindow({
@@ -14,19 +15,41 @@ export default function PixelWindow({
   theme = "yellow",
   children,
   className,
+  onCloseAttempt,
 }: Props) {
+  const barRef = useRef<HTMLDivElement | null>(null);
+  const btnRef = useRef<HTMLSpanElement | null>(null);
+
+  const [tx, setTx] = useState(0);
+
+  const [hidden, setHidden] = useState(false); // hide after click
+
+  const disappear = () => setHidden(true);
+
   return (
     <div className={`pixel-wrap ${className || ""}`} data-theme={theme}>
       <div className="pixel-window">
-        <div className="titlebar">
+        <div ref={barRef} className="titlebar relative">
           <div className="title-section">
-            <Home className="home-icon" size={24} style={{ color: '#f6e05e' }} />
+            <Home className="home-icon" size={24} style={{ color: "#f6e05e" }} />
             <span className="title">{title}</span>
           </div>
+
           <div className="buttons">
-            <span className="btn close" />
+            {!hidden && (
+              <span
+                className="btn close"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // trigger the prank popup instead of closing the window
+                  onCloseAttempt?.();
+                }}
+              />
+            )}
           </div>
         </div>
+
         <div className="content">{children}</div>
       </div>
 
