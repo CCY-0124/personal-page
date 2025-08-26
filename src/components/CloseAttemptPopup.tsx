@@ -30,7 +30,8 @@ export default function CloseAttemptPopup({ open, onClose, count }: Props) {
             <DraggablePixelWindow
                 id="close-attempt-popup"
                 title="Hey..."
-                theme="yellow"
+                width="650px"
+                height="350px"
                 icon={<AlertTriangle size={18} />}
                 onClose={onClose}
                 initialPosition={{ x: 720, y: 320 }}

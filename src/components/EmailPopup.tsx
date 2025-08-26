@@ -34,8 +34,9 @@ export default function EmailPopup({ open, onClose, email }: Props) {
             <DraggablePixelWindow
                 id="email-popup"
                 title="Contact Email"
-                theme="yellow"
                 icon={<Mail size={18} />}
+                width="480px"
+                height="150px"
                 onClose={() => onClose()}
                 initialPosition={{ x: 800, y: 400 }}
                 className="z-[1000]"
@@ -65,7 +66,6 @@ export default function EmailPopup({ open, onClose, email }: Props) {
                             </a>
                         </div>
                     </div>
-                    <p className="mt-3 text-s opacity-70">I’m looking forward to your email :3 </p>
                 </div>
             </DraggablePixelWindow>
         </>
