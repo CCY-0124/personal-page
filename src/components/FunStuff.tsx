@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Star, ChevronDown, ChevronUp, Image as ImageIcon, X } from 'lucide-react';
+import { Image as ImageIcon, X } from 'lucide-react';
 
 interface FunItem {
   id: string;
@@ -12,13 +12,12 @@ interface FunItem {
 }
 
 const FunStuff: React.FC = () => {
-  const [isFunFactExpanded, setIsFunFactExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState<FunItem | null>(null);
 
   const funItems: FunItem[] = [
     {
       id: 'robotic-life',
-      title: 'Why Not Let Your Child Start Preparing for LeetCode as Early as Grade 2?',
+      title: 'Let Your Child Start Preparing for LeetCode as Early as Grade 2',
       image: '/robotics.jpg',
 
       content: `As a former counseling professional and now a Computer Science student, joining a robotics company has been both fun and inspiring. It is not just about technology, but also about building a brand, mentoring students, and sparking curiosity. At our recent Open House event, I had the privilege of serving as one of the experienced coaches, leading the coding session alongside the robotics activities.
@@ -54,8 +53,6 @@ Scholiast was more than just a class project. It was proof of how much can be ac
 
   ];
 
-  const funFact = `I built my first PC at 14. Nano boards and mini boards made no sense then, so I drilled holes in the case to make it work. Since then, I've always had a knack for breaking and fixing electronics and 3C products.`;
-
   return (
     <>
       <div className="funstuff-container">
@@ -74,24 +71,6 @@ Scholiast was more than just a class project. It was proof of how much can be ac
               <h3 className="card-title">{item.title}</h3>
             </div>
           ))}
-        </div>
-
-        {/* Fun Fact Banner */}
-        <div className="fun-fact-banner" onClick={() => setIsFunFactExpanded(!isFunFactExpanded)}>
-          <div className="banner-content">
-            <div className="banner-left">
-              <Star size={24} />
-              <span className="banner-text">Fun Fact</span>
-            </div>
-            <div className="banner-right">
-              {isFunFactExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-            </div>
-          </div>
-          {isFunFactExpanded && (
-            <div className="fun-fact-content">
-              <p>{funFact}</p>
-            </div>
-          )}
         </div>
       </div>
 
@@ -141,7 +120,6 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           margin: 0 auto;
           padding: 20px;
           background: #0b0b0b;
-          height: 450px;
           overflow-y: auto;
         }
 
@@ -212,55 +190,6 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           -webkit-box-orient: vertical;
         }
 
-        .fun-fact-banner {
-          background: #141414;
-          border: 2px solid #F7F4C8;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .fun-fact-banner:hover {
-          background: rgba(247, 244, 200, 0.05);
-        }
-
-        .banner-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 20px;
-        }
-
-        .banner-left {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        .banner-text {
-          color: #F7F4C8;
-          font-size: 18px;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .banner-right {
-          color: #F7F4C8;
-        }
-
-        .fun-fact-content {
-          padding: 0 20px 20px;
-          border-top: 1px solid #F7F4C8;
-          margin-top: 15px;
-        }
-
-        .fun-fact-content p {
-          color: #F7F4C8;
-          font-size: 14px;
-          line-height: 1.6;
-          margin: 0;
-        }
-
         /* Modal Styles */
         .detail-modal-overlay {
           position: fixed;
@@ -281,7 +210,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           border: 3px solid #F7F4C8;
           max-width: 800px;
           width: 100%;
-          max-height: 80vh;
+          max-height: 90vh;
           overflow-y: auto;
           position: relative;
         }
