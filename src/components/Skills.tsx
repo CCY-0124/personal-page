@@ -151,14 +151,14 @@ const Skills: React.FC = () => {
 
       <style jsx>{`
         .skills-container {
-          max-height: 75vh;
+          max-height: 100vh;
           overflow-y: auto;
         }
 
                  :global(.content) {
            width: 100%;
            max-width: 1200px;
-           max-height: 75vh;
+           max-height: 100vh;
            overflow-y: auto;
            margin: 0 auto;
            padding: 10px 16px 10px 10px;

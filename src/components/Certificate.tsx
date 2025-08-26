@@ -91,12 +91,12 @@ const Certificate: React.FC = () => {
         }
 
         .certificate-section {
-          margin-bottom: 30px;
+          margin-bottom: 10px;
         }
 
         .certificate-table {
           background: #141414;
-          padding: 20px;
+          padding: 10px;
           display: flex;
           flex-direction: column;
           gap: 0;

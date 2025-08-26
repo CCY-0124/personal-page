@@ -28,17 +28,17 @@ export default function PersonalPage() {
   const getWindowSize = (section: string) => {
     switch (section) {
       case 'skills':
-        return { width: '600px', height: '500px' }; 
+        return { width: '1220px', height: '1800px' }; 
       case 'projects':
-        return { width: '900px', height: '700px' }; 
+        return { width: '1100px', height: '700px' }; 
       case 'about':
-        return { width: '500px', height: '400px' }; 
+        return { width: '900px', height: '750px' }; 
       case 'experience':
-        return { width: '750px', height: '550px' }; 
+        return { width: '750px', height: '670px' }; 
       case 'certificate':
-        return { width: '650px', height: '500px' }; 
+        return { width: '900px', height: '620px' }; 
       case 'funstuff':
-        return { width: '800px', height: '600px' }; 
+        return { width: '800px', height: '700px' }; 
       default:
         return { width: '500px', height: '400px' };
     }

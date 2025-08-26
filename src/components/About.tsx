@@ -36,12 +36,10 @@ const About: React.FC = () => {
             </div>
             <div className="card-content">
               <div className="info-item">
-                <div className="info-label">BCIT</div>
-                <div className="info-value">Computer Systems Technology</div>
+                <div className="info-label">BCIT - Computer Systems Technology</div>
               </div>
               <div className="info-item">
-                <div className="info-label">HKSYU</div>
-                <div className="info-value">Counseling and Psychology</div>
+                <div className="info-label">HKSYU - Counseling and Psychology</div>
               </div>
             </div>
           </div>
@@ -87,8 +85,8 @@ const About: React.FC = () => {
       <style jsx>{`
         .about-header {
           text-align: center;
-          margin-bottom: 30px;
-          padding-bottom: 20px;
+          margin-bottom: 10px;
+          padding-bottom: 10px;
           border-bottom: 2px solid #F7F4C8;
         }
 
@@ -100,7 +98,7 @@ const About: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 16px;
+          margin: 0 auto 10px;
           border: 3px solid #000000;
           overflow: hidden;
         }
@@ -120,7 +118,6 @@ const About: React.FC = () => {
           color: #F7F4C8;
           font-size: 32px;
           font-weight: 700;
-          margin: 0 0 8px 0;
           text-transform: uppercase;
           letter-spacing: 2px;
         }
@@ -138,14 +135,13 @@ const About: React.FC = () => {
         }
 
         .story-section {
-          margin-bottom: 30px;
-          padding: 20px;
+          padding: 10px;
         }
 
         .story-text {
           color: #F7F4C8;
           font-size: 16px;
-          line-height: 1.6;
+          line-height: 1.2;
           margin: 0;
           text-align: justify;
         }
@@ -153,7 +149,7 @@ const About: React.FC = () => {
         .info-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          gap: 10px;
         }
 
         .interests-card {
@@ -161,7 +157,7 @@ const About: React.FC = () => {
         }
 
         .info-card {
-          padding: 20px;
+          padding: 10px;
           transition: all 0.3s ease;
         }
 
@@ -174,8 +170,8 @@ const About: React.FC = () => {
           display: flex;
           align-items: center;
           gap: 12px;
-          margin-bottom: 16px;
-          padding-bottom: 12px;
+          margin-bottom: 10px;
+          padding-bottom: 6px;
           border-bottom: 1px solid #F7F4C8;
         }
 
@@ -193,11 +189,11 @@ const About: React.FC = () => {
         }
 
         .card-content {
-          space-y: 12px;
+          space-y: 10px;
         }
 
         .info-item {
-          margin-bottom: 12px;
+          margin-bottom: 6px;
         }
 
         .info-label {
@@ -217,7 +213,7 @@ const About: React.FC = () => {
           display: flex;
           align-items: center;
           gap: 8px;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
           color: #F7F4C8;
           font-size: 16px;
         }
