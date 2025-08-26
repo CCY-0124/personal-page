@@ -161,7 +161,7 @@ const Skills: React.FC = () => {
            max-height: 100vh;
            overflow-y: auto;
            margin: 0 auto;
-           padding: 10px 16px 10px 10px;
+           padding: 5px 8px 5px 5px;
            background: #000000 !important;
            font-family: 'IBM Plex Mono', monospace;
          }
@@ -196,7 +196,7 @@ const Skills: React.FC = () => {
 
                           .skills-table {
            background: #141414;
-           padding: 10px;
+           padding: 5px;
            display: flex;
            flex-direction: column;
            gap: 10px;
@@ -340,7 +340,7 @@ const Skills: React.FC = () => {
 
                  @media (max-width: 768px) {
            .skills-container {
-             padding: 20px 15px;
+             padding: 10px 8px;
            }
 
            .section-title {
@@ -379,7 +379,7 @@ const Skills: React.FC = () => {
           }
 
           .skill-bar-content {
-            padding: 15px 20px;
+            padding: 10px 15px;
             gap: 15px;
           }
 

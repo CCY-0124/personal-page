@@ -141,7 +141,7 @@ const About: React.FC = () => {
         .story-text {
           color: #F7F4C8;
           font-size: 16px;
-          line-height: 1.2;
+          line-height: 1.6;
           margin: 0;
           text-align: justify;
         }
@@ -149,7 +149,7 @@ const About: React.FC = () => {
         .info-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
+          gap: 20px;
         }
 
         .interests-card {

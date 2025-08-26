@@ -129,8 +129,10 @@ export default function DraggablePixelWindow({
           overflow: hidden;
           min-width: 300px;
           min-height: 200px;
-          max-width: 80vw;
-          max-height: 80vh;
+          max-width: 90vw;
+          max-height: 90vh;
+          display: flex;
+          flex-direction: column;
         }
 
         .titlebar {
@@ -143,6 +145,7 @@ export default function DraggablePixelWindow({
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
           cursor: grab;
+          flex-shrink: 0;
         }
 
         .titlebar:active {
@@ -201,7 +204,7 @@ export default function DraggablePixelWindow({
         }
 
         .content {
-          max-height: 75vh;
+          flex: 1;
           overflow: auto;
           padding: 16px;
           line-height: 1.4;
@@ -211,6 +214,7 @@ export default function DraggablePixelWindow({
           border: 4px solid var(--accent1);
           margin: 8px;
           font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+          min-height: 0;
         }
 
         .content::-webkit-scrollbar {

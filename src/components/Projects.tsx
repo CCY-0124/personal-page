@@ -891,7 +891,7 @@ const Projects: React.FC = () => {
         .detail-close { background: #ff4d4d; }
 
         .detail-content {
-          max-height: 70vh; overflow: auto; padding: 16px; line-height: 1.4;
+          max-height: 85vh; overflow: auto; padding: 16px; line-height: 1.4;
           background: #141414; border: 4px solid #f6e05e; margin: 8px;
           font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           color: #F7F4C8;
