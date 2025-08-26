@@ -18,7 +18,7 @@ const FunStuff: React.FC = () => {
     {
       id: 'robotic-life',
       title: 'Let Your Child Start Preparing for LeetCode as Early as Grade 2',
-      image: '/robotics.jpg',
+      image: '/funstuff-images/robotics-life.jpg',
 
       content: `As a former counseling professional and now a Computer Science student, joining a robotics company has been both fun and inspiring. It is not just about technology, but also about building a brand, mentoring students, and sparking curiosity. At our recent Open House event, I had the privilege of serving as one of the experienced coaches, leading the coding session alongside the robotics activities.
 
@@ -36,7 +36,7 @@ Maybe one day I will return to my KidCode project, where I imagine building prob
     {
       id: 'scholist',
       title: 'Scholiast: Winning at Innovation and Teamwork',
-      image: '/scholist.jpg',
+      image: '/funstuff-images/scholist-blog.jpg',
       content: `June 30 was a milestone moment for our team. Our project, Scholiast, was highlighted by BCIT and even showcased on their official LinkedIn page. Being recognized in this way was both humbling and exciting, and seeing our work celebrated by the school's official channels made it even more meaningful.
 
 Out of all the student projects from terms 1 and 2, we were honored to receive the awards for Most Innovative and Best Teamwork. With so many strong competitors, taking home two out of the three categories felt almost unreal.
