@@ -5,7 +5,7 @@ import { Code, FolderOpen, User, Briefcase, Award, Star } from 'lucide-react';
 import Home from '@/components/Home';
 import Navigation from '@/components/Navigation';
 import DraggablePixelWindow from '@/components/DraggablePixelWindow';
-import Skills from '@/components/Skills';
+import SkillsNew from '@/components/SkillsNew';
 import Projects from '@/components/Projects';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
@@ -17,30 +17,78 @@ type WindowState = {
   section: string;
   position: { x: number; y: number };
   zIndex: number;
-  size?: { width: string; height: string };
+  size: { width: string; height: string };
 };
 
 export default function PersonalPage() {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(1000);
 
-  // Add window size configuration function
-  const getWindowSize = (section: string) => {
+  // Window size configuration - memoized to prevent unnecessary recalculations
+  const getWindowSize = React.useMemo(() => (section: string) => {
+    const size = (() => {
+      switch (section) {
+        case 'skills':
+          return { width: '1220px', height: '730px' }; 
+        case 'projects':
+          return { width: '1200px', height: '700px' }; 
+        case 'about':
+          return { width: '900px', height: '800px' }; 
+        case 'experience':
+          return { width: '880px', height: '650px' }; 
+        case 'certificate':
+          return { width: '900px', height: '620px' }; 
+        case 'funstuff':
+          return { width: '600px', height: '400px' }; 
+        default:
+          return { width: '500px', height: '400px' };
+      }
+    })();
+    
+    return size;
+  }, []);
+
+  const getWindowPosition = (section: string) => {
+    // Get viewport dimensions
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+    
     switch (section) {
       case 'skills':
-        return { width: '1220px', height: '780px' }; 
+        return { 
+          x: viewportWidth * 0.10, // 10% from left
+          y: viewportHeight * 0.02  
+        };
       case 'projects':
-        return { width: '1200px', height: '700px' }; 
+        return { 
+          x: viewportWidth * 0.30, // 30% from left
+          y: viewportHeight * 0.10  
+        };
       case 'about':
-        return { width: '900px', height: '800px' }; 
+        return { 
+          x: (viewportWidth - 900) / 2, // center horizontally (900px is about window width)
+          y: viewportHeight * 0.01  
+        };
       case 'experience':
-        return { width: '750px', height: '550px' }; 
+        return { 
+          x: viewportWidth * 0.50, // 60% from left
+          y: viewportHeight * 0.1  
+        };
       case 'certificate':
-        return { width: '900px', height: '620px' }; 
+        return { 
+          x: viewportWidth * 0.05, // 70% from left
+          y: viewportHeight * 0.1  
+        };
       case 'funstuff':
-        return { width: '600px', height: '400px' }; 
+        return { 
+          x: viewportWidth * 0.20, // 20% from left
+          y: viewportHeight * 0.20  
+        };
       default:
-        return { width: '500px', height: '400px' };
+        return { 
+          x: 100, 
+          y: 100 
+        };
     }
   };
 
@@ -53,11 +101,9 @@ export default function PersonalPage() {
       return;
     }
 
-    // Calculate position for new window (staggered)
-    const newPosition = {
-      x: 100 + (openWindows.length * 50),
-      y: 100 + (openWindows.length * 50),
-    };
+    // Get specific position for this section
+    const newPosition = getWindowPosition(section);
+    const newSize = getWindowSize(section);
 
     const newZIndex = highestZIndex + 1;
     setHighestZIndex(newZIndex);
@@ -67,9 +113,10 @@ export default function PersonalPage() {
       section,
       position: newPosition,
       zIndex: newZIndex,
-      size: getWindowSize(section), // Add size configuration
+      size: newSize, // Ensure size is properly set
     };
 
+    // Preserve existing windows exactly as they are
     setOpenWindows(prev => [...prev, newWindow]);
   };
 
@@ -93,7 +140,7 @@ export default function PersonalPage() {
   const renderSectionContent = (section: string) => {
     switch (section) {
       case 'skills':
-        return <Skills />;
+        return <SkillsNew />;
       case 'projects':
         return <Projects />;
       case 'about':
@@ -164,14 +211,13 @@ export default function PersonalPage() {
           key={window.id}
           id={window.id}
           title={getSectionTitle(window.section)}
-          theme="yellow"
           initialPosition={window.position}
           zIndex={window.zIndex}
           onClose={closeWindow}
           onWindowClick={() => bringWindowToFront(window.id)}
           icon={getSectionIcon(window.section)}
-          width={window.size?.width}
-          height={window.size?.height}
+          width={window.size.width}
+          height={window.size.height}
         >
           {renderSectionContent(window.section)}
         </DraggablePixelWindow>

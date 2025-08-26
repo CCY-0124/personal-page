@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from "react";
 type Props = {
   id: string;
   title: string;
-  theme?: "yellow" | "blue";
   children: React.ReactNode;
   className?: string;
   onClose: (id: string) => void;
@@ -12,14 +11,13 @@ type Props = {
   zIndex?: number;
   onWindowClick?: () => void;
   icon?: React.ReactNode;
-  width?: string;
-  height?: string;
+  width: string;
+  height: string;
 };
 
 export default function DraggablePixelWindow({
   id,
   title,
-  theme = "yellow",
   children,
   className,
   onClose,
@@ -77,11 +75,12 @@ export default function DraggablePixelWindow({
     }
   }, [isDragging, dragOffset]);
 
+  // Remove debug logging to prevent unnecessary re-renders
+
   return (
     <div
       ref={windowRef}
       className={`draggable-window ${className || ""}`}
-      data-theme={theme}
       style={{
         position: 'fixed',
         left: position.x,
@@ -120,28 +119,25 @@ export default function DraggablePixelWindow({
         }
 
         .pixel-window {
-          color: var(--text);
-          background: var(--panel);
+          color: #f7f4c8;
+          background: #000000;
           border-radius: 8px;
-          border: 4px solid var(--accent1);
+          border: 4px solid #f6e05e;
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
           position: relative;
           overflow: hidden;
           min-width: 300px;
           min-height: 200px;
-          max-width: 90vw;
-          max-height: 90vh;
           display: flex;
           flex-direction: column;
         }
 
         .titlebar {
-          background: var(--titlebar-bg);
+          background: #000000;
           padding: 6px 12px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          image-rendering: pixelated;
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
           cursor: grab;
@@ -161,23 +157,11 @@ export default function DraggablePixelWindow({
         .title-icon {
           display: flex;
           align-items: center;
-          color: #f6e05e !important;
-        }
-
-        .title-icon svg {
-          color: #f6e05e !important;
-          fill: #f6e05e !important;
-          stroke: #f6e05e !important;
-        }
-
-        .title-icon path {
-          fill: #f6e05e !important;
-          stroke: #f6e05e !important;
+          color: #f6e05e;
         }
 
         .title {
-          font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New",
-            monospace;
+          font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           font-weight: 700;
           font-size: 24px;
           letter-spacing: 0.2px;
@@ -194,13 +178,12 @@ export default function DraggablePixelWindow({
           height: 20px;
           display: inline-block;
           border-radius: 0px;
-          box-shadow: 0 0 0 2px var(--accent1) inset,
-            0 0 0 2px var(--accent1);
-          image-rendering: pixelated;
+          box-shadow: 0 0 0 2px #f6e05e inset, 0 0 0 2px #f6e05e;
           cursor: pointer;
         }
+        
         .btn.close {
-          background: var(--btn2);
+          background: #ff4d4d;
         }
 
         .content {
@@ -208,10 +191,10 @@ export default function DraggablePixelWindow({
           overflow: auto;
           padding: 16px;
           line-height: 1.4;
-          background: var(--panel);
+          background: #000000;
           border-bottom-left-radius: 4px;
           border-bottom-right-radius: 4px;
-          border: 4px solid var(--accent1);
+          border: 4px solid #f6e05e;
           margin: 8px;
           font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           min-height: 0;
@@ -222,43 +205,22 @@ export default function DraggablePixelWindow({
         }
 
         .content::-webkit-scrollbar-track {
-          background: var(--titlebar-bg);
+          background: #000000;
           margin: 4px;
         }
 
         .content::-webkit-scrollbar-thumb {
-          background: var(--accent1);
+          background: #f6e05e;
           border-radius: 0px;
-          border: 2px solid var(--accent2);
+          border: 2px solid #000000;
         }
 
         .content::-webkit-scrollbar-thumb:hover {
-          background: var(--text);
+          background: #f7f4c8;
         }
 
         .content::-webkit-scrollbar-corner {
-          background: var(--titlebar-bg);
-        }
-
-        /* Theme variables */
-        .draggable-window[data-theme="yellow"] {
-          --bg: #000000;
-          --panel: #000000;
-          --titlebar-bg: #000000;
-          --accent1: #f6e05e;
-          --accent2: #000000;
-          --text: #f7f4c8;
-          --btn2: #ff4d4d;
-        }
-
-        .draggable-window[data-theme="blue"] {
-          --bg: #232533;
-          --panel: #2d2f41;
-          --titlebar-bg: #1a1c2a;
-          --accent1: #79c0ff;
-          --accent2: #0b0e19;
-          --text: #e6f2ff;
-          --btn2: #ff6b6b;
+          background: #000000;
         }
       `}</style>
     </div>
