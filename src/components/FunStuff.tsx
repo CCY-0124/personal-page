@@ -91,23 +91,10 @@ Scholiast was more than just a class project. It was proof of how much can be ac
               </div>
             </div>
             <div className="detail-content">
-              <div className="item-hero">
-                <div className="item-info">
-                  <p className="item-description">{selectedItem.content}</p>
-                </div>
-                <div className="item-image">
-                  <div className="image-placeholder">
-                    <ImageIcon size={40} />
-                    <span>{selectedItem.title}</span>
-                  </div>
-                </div>
-              </div>
 
-              <div className="item-section">
-                <h3>Category</h3>
-                <div className="category-badge">
-                  {selectedItem.category}
-                </div>
+                <div className="project-info">
+                  <h3 className="project-subtitle">{selectedItem.title}</h3>
+                  <p className="project-description">{selectedItem.content}</p>
               </div>
             </div>
           </div>
@@ -206,127 +193,105 @@ Scholiast was more than just a class project. It was proof of how much can be ac
         }
 
         .detail-modal-window {
+          color: #f7f4c8;
           background: #141414;
-          border: 3px solid #F7F4C8;
-          max-width: 800px;
-          width: 100%;
-          max-height: 90vh;
-          overflow-y: auto;
+          border: 4px solid #f6e05e;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
           position: relative;
+          overflow: hidden;
+          min-width: 300px;
+          min-height: 200px;
+          max-width: 60vw;
+          max-height: 85vh;
         }
 
         .detail-titlebar {
           background: #0a0a0a;
-          padding: 15px 20px;
-          border-bottom: 2px solid #F7F4C8;
+          padding: 6px 12px;
           display: flex;
+          align-items: center;
           justify-content: space-between;
-          align-items: center;
+          image-rendering: pixelated;
+          cursor: grab;
         }
+        .detail-titlebar:active { cursor: grabbing; }
 
-        .detail-title-section {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
+        .detail-title-section { display: flex; align-items: center; gap: 8px; }
 
         .detail-title {
-          color: #F7F4C8;
-          font-size: 18px;
+          font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           font-weight: 700;
-          margin: 0;
+          font-size: 24px;
+          letter-spacing: 0.2px;
+          color: #f6e05e;
         }
 
-        .detail-buttons {
-          display: flex;
-          gap: 6px;
-        }
+        .detail-buttons { display: flex; gap: 6px; align-items: center; }
 
         .detail-btn {
-          width: 20px;
-          height: 20px;
-          display: inline-block;
-          border-radius: 0px;
-          box-shadow: 0 0 0 2px #F7F4C8 inset,
-            0 0 0 2px #F7F4C8;
-          cursor: pointer;
+          width: 20px; height: 20px; display: inline-block;
+          box-shadow: 0 0 0 2px #f6e05e inset, 0 0 0 2px #f6e05e;
+          image-rendering: pixelated; cursor: pointer;
         }
-
-        .detail-close {
-          background: #ff4d4d;
-        }
+        .detail-close { background: #ff4d4d; }
 
         .detail-content {
-          padding: 20px;
+          max-height: 85vh; overflow: auto; padding: 16px; line-height: 1.4;
+          background: #141414; border: 4px solid #f6e05e; margin: 8px;
+          font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+          color: #F7F4C8;
         }
 
-        .item-hero {
+        .detail-content::-webkit-scrollbar { width: 12px; }
+        .detail-content::-webkit-scrollbar-track { background: #0a0a0a; margin: 4px; }
+        .detail-content::-webkit-scrollbar-thumb { background: #f6e05e; border: 2px solid #000000; }
+        .detail-content::-webkit-scrollbar-thumb:hover { background: #f7f4c8; }
+        .detail-content::-webkit-scrollbar-corner { background: #0a0a0a; }
+
+        .project-hero {
           display: flex;
-          gap: 20px;
-          margin-bottom: 30px;
+          gap: 24px;
+          margin-bottom: 32px;
+          padding-bottom: 24px;
+          border-bottom: 1px solid #f6e05e;
         }
 
-        .item-info {
+        .project-info {
           flex: 1;
         }
 
-        .item-subtitle {
-          color: #F7F4C8;
-          font-size: 20px;
-          font-weight: 600;
-          margin: 0 0 15px 0;
-          line-height: 1.3;
-        }
-
-        .item-description {
-          color: #F7F4C8;
-          font-size: 14px;
-          line-height: 1.6;
-          margin: 0;
-          white-space: pre-line;
-        }
-
-        .item-image {
+        .project-video {
           flex-shrink: 0;
-          width: 200px;
-          height: 150px;
+          width: 300px;
         }
 
-        .image-placeholder {
+        .video-placeholder {
           width: 100%;
-          height: 100%;
-          background: #F7F4C8;
-          border: 2px solid #000000;
+          height: 200px;
+          background: rgba(246, 224, 94, 0.1);
+          border: 2px solid #f6e05e;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          color: #000000;
+          color: #f6e05e;
           font-size: 14px;
         }
 
-        .item-section {
-          margin-bottom: 20px;
+        .project-subtitle {
+          color: #f6e05e;
+          font-size: 24px;
+          font-weight: 700;
+          margin: 0 0 16px 0;
+          line-height: 1.3;
         }
 
-        .item-section h3 {
+        .project-description {
+          line-height: 1.4;
+          font-size: 14px;
+          margin: 0;
           color: #F7F4C8;
-          font-size: 16px;
-          font-weight: 600;
-          margin: 0 0 10px 0;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .category-badge {
-          background: #F7F4C8;
-          color: #000000;
-          padding: 8px 16px;
-          font-weight: 600;
-          font-size: 14px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          display: inline-block;
+          white-space: pre-line;
         }
 
         @media (max-width: 768px) {
@@ -357,13 +322,13 @@ Scholiast was more than just a class project. It was proof of how much can be ac
             font-size: 16px;
           }
 
-          .item-hero {
+          .project-hero {
             flex-direction: column;
+            gap: 16px;
           }
 
-          .item-image {
+          .project-video {
             width: 100%;
-            height: 120px;
           }
         }
       `}</style>
