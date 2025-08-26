@@ -85,22 +85,23 @@ const About: React.FC = () => {
       <style jsx>{`
         .about-header {
           text-align: center;
-          margin-bottom: 10px;
           padding-bottom: 10px;
           border-bottom: 2px solid #F7F4C8;
+          background: #141414;
         }
 
         .avatar-circle {
           width: 80px;
           height: 80px;
-          background:rgb(0, 0, 0);
+          background: #141414;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 10px;
-          border: 3px solid #000000;
+          border: 3px solid #141414;
           overflow: hidden;
+          
         }
 
         .avatar-image {
@@ -120,6 +121,7 @@ const About: React.FC = () => {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 2px;
+          background: #141414;
         }
 
         .about-tagline {
@@ -128,10 +130,12 @@ const About: React.FC = () => {
           font-style: italic;
           margin: 0;
           opacity: 0.9;
+          background: #141414;
         }
 
         .about-content {
           space-y: 24px;
+          background: #141414;
         }
 
         .story-section {
