@@ -669,10 +669,11 @@ const Projects: React.FC = () => {
         }
 
         .post-image {
-          flex-shrink: 0;
           width: 200px;
-          height: 150px;
-          overflow: hidden; /* crop covers neatly */
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          border: 2px solid #000000;
+          background: #000000;
         }
 
         .image-placeholder {
@@ -690,7 +691,7 @@ const Projects: React.FC = () => {
 
         .screenshot-img {
           width: 100%;
-          height: 100%;
+          aspect-ratio: 4 / 3;
           object-fit: cover;
           border: 2px solid #000;
           display: block;
@@ -946,9 +947,16 @@ const Projects: React.FC = () => {
         }
         .screenshot-item { display: flex; flex-direction: column; gap: 12px; }
         .screenshot-placeholder {
-          width: 100%; height: 150px; background: rgba(246, 224, 94, 0.1);
-          border: 2px solid #f6e05e; display: flex; flex-direction: column; align-items: center; justify-content: center;
-          color: #f6e05e; font-size: 14px;
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          background: rgba(246, 224, 94, 0.1);
+          border: 2px solid #f6e05e;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #f6e05e;
+          font-size: 14px;
         }
         .screenshot-description {
           font-size: 16px; line-height: 1.4; color: #f7f4c8; margin: 0;
