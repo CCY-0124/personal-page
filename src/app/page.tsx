@@ -71,7 +71,7 @@ export default function PersonalPage() {
         };
       case 'experience':
         return { 
-          x: viewportWidth * 0.50, // 60% from left
+          x: viewportWidth * 0.40, // 60% from left
           y: viewportHeight * 0.1  
         };
       case 'certificate':
