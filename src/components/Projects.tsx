@@ -21,10 +21,10 @@ interface Project {
   githubLink?: string;
   demoLink?: string;
   highlights: string[];
-  coverImage?: string;       // NEW: card cover
-  screenshots: string[];     // NEW: gallery images (≥4)
+  coverImage?: string;       // card cover (4:3)
+  screenshots: string[];     // gallery images (16:9)
   video?: string;            // optional mp4 for non-YouTube projects
-  youtubeId?: string;        // NEW: only scholist
+  youtubeId?: string;        // only scholist
   longDescription: string;
   features: string[];
   challenges: string[];
@@ -154,9 +154,9 @@ const Projects: React.FC = () => {
         '/project-screenshots/scholist/shot3.png',
         '/project-screenshots/scholist/shot4.png',
         '/project-screenshots/scholist/shot5.png',
-        '/project-screenshots/scholist/shot6.png',
+        '/project-screenshots/scholist/shot6.png'
       ],
-      youtubeId: 'aUjmIdcZkuk', // replace with your actual id, e.g. 'dQw4w9WgXcQ'
+      youtubeId: 'aUjmIdcZkuk',
       longDescription:
         'Scholist is a comprehensive academic management platform that addresses the common challenges students face in organizing their educational resources and collaborating with peers. The platform provides an intuitive interface for managing study materials, creating study groups, and tracking academic progress. It emphasizes simplicity and accessibility while offering powerful features for serious students.',
       features: [
@@ -360,7 +360,7 @@ const Projects: React.FC = () => {
                       <img
                         src={project.coverImage}
                         alt={`${project.title} cover`}
-                        className="screenshot-img"
+                        className="screenshot-img"  /* 4:3 cover */
                         loading="lazy"
                       />
                     ) : (
@@ -464,7 +464,7 @@ const Projects: React.FC = () => {
                   <p className="project-description">{selectedProject.longDescription}</p>
                 </div>
 
-                {/* Media column: YouTube (scholist) > video > placeholder */}
+                {/* Media column: YouTube (scholist) > video > placeholder/cover */}
                 <div className="project-video">
                   {selectedProject.id === 'scholist' && selectedProject.youtubeId ? (
                     <div className="video-embed">
@@ -483,14 +483,14 @@ const Projects: React.FC = () => {
                     <img
                       src={selectedProject.coverImage}
                       alt={`${selectedProject.title} cover`}
-                      className="screenshot-img"
+                      className="screenshot-img"  /* keep 4:3 for hero/cover */
                       loading="lazy"
                     />
                   ) : selectedProject.screenshots?.[0] ? (
                     <img
                       src={selectedProject.screenshots[0]}
                       alt={`${selectedProject.title} screenshot`}
-                      className="screenshot-img"
+                      className="screenshot-img"  /* still 4:3 in hero area */
                       loading="lazy"
                     />
                   ) : (
@@ -527,7 +527,7 @@ const Projects: React.FC = () => {
                 </ul>
               </div>
 
-              {/* Screenshots Gallery (≥4 with fallback) */}
+              {/* Screenshots Gallery (16:9 only here) */}
               <div className="project-section">
                 <h3>Project Screenshots</h3>
                 <div className="screenshots-grid">
@@ -540,11 +540,11 @@ const Projects: React.FC = () => {
                         <img
                           src={src}
                           alt={`${selectedProject.title} screenshot ${idx + 1}`}
-                          className="screenshot-img"
+                          className="gallery-img"   /* 16:9 for gallery only */
                           loading="lazy"
                         />
                       ) : (
-                        <div className="screenshot-placeholder">
+                        <div className="gallery-placeholder">  {/* 16:9 placeholder */}
                           <ImageIcon size={40} />
                           <span>Screenshot {idx + 1}</span>
                         </div>
@@ -670,7 +670,7 @@ const Projects: React.FC = () => {
 
         .post-image {
           width: 200px;
-          aspect-ratio: 4 / 3;
+          aspect-ratio: 4 / 3; /* cover preview in list */
           object-fit: cover;
           border: 2px solid #000000;
           background: #000000;
@@ -689,6 +689,7 @@ const Projects: React.FC = () => {
           font-size: 14px;
         }
 
+        /* Covers (list cards + modal hero) stay 4:3 */
         .screenshot-img {
           width: 100%;
           aspect-ratio: 4 / 3;
@@ -946,9 +947,20 @@ const Projects: React.FC = () => {
           display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;
         }
         .screenshot-item { display: flex; flex-direction: column; gap: 12px; }
-        .screenshot-placeholder {
+
+        /* 16:9 ONLY for gallery */
+        .gallery-img {
           width: 100%;
-          aspect-ratio: 4 / 3;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+          border: 2px solid #000;
+          display: block;
+          background: #000;
+        }
+
+        .gallery-placeholder {
+          width: 100%;
+          aspect-ratio: 16 / 9;
           background: rgba(246, 224, 94, 0.1);
           border: 2px solid #f6e05e;
           display: flex;
@@ -958,6 +970,7 @@ const Projects: React.FC = () => {
           color: #f6e05e;
           font-size: 14px;
         }
+
         .screenshot-description {
           font-size: 16px; line-height: 1.4; color: #f7f4c8; margin: 0;
         }

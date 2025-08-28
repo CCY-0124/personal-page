@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Image as ImageIcon, X } from 'lucide-react';
+import { Image as ImageIcon } from 'lucide-react';
+import Image from 'next/image';
 
 interface FunItem {
   id: string;
   title: string;
-  image: string;
+  image: string;   // per-item hero image
+  icon: string;
   content: string;
   category: string;
 }
@@ -17,9 +19,9 @@ const FunStuff: React.FC = () => {
   const funItems: FunItem[] = [
     {
       id: 'robotic-life',
+      icon: '/project-screenshots/fun-stuff/robotics.png',
       title: 'Let Your Child Start Preparing for LeetCode as Early as Grade 2',
-      image: '/funstuff-images/robotics-life.jpg',
-
+      image: '/project-screenshots/fun-stuff/robotics-life.png',
       content: `As a former counseling professional and now a Computer Science student, joining a robotics company has been both fun and inspiring. It is not just about technology, but also about building a brand, mentoring students, and sparking curiosity. At our recent Open House event, I had the privilege of serving as one of the experienced coaches, leading the coding session alongside the robotics activities.
 
 We started with simple game scripts in Scratch. But as I watched the kids, I thought, why not make it even more engaging for the parents, who are the ones ultimately making the decisions? During the summer, I usually spend time working on my own projects and practicing LeetCode problems. That gave me an idea: what if we created a problem-solving game similar to LeetCode, but designed for kids? Imagine telling parents, "Your child can start preparing for LeetCode as early as grade 2."
@@ -35,8 +37,9 @@ Maybe one day I will return to my KidCode project, where I imagine building prob
     },
     {
       id: 'scholist',
+      icon: '/project-screenshots/fun-stuff/scholist.png',
       title: 'Scholiast: Winning at Innovation and Teamwork',
-      image: '/funstuff-images/scholist-blog.jpg',
+      image: '/project-screenshots/fun-stuff/scholist-blog.png',
       content: `June 30 was a milestone moment for our team. Our project, Scholiast, was highlighted by BCIT and even showcased on their official LinkedIn page. Being recognized in this way was both humbling and exciting, and seeing our work celebrated by the school's official channels made it even more meaningful.
 
 Out of all the student projects from terms 1 and 2, we were honored to receive the awards for Most Innovative and Best Teamwork. With so many strong competitors, taking home two out of the three categories felt almost unreal.
@@ -50,7 +53,6 @@ For me, working on Scholiast was eye-opening. I was amazed by the potential of R
 Scholiast was more than just a class project. It was proof of how much can be achieved when teamwork, self-learning, and determination come together. We supported each other through steep learning curves, pushed ourselves to adapt quickly, and grew stronger as a team in the process. The experience left me proud of what we built and motivated to keep challenging myself as a developer.`,
       category: 'Education'
     },
-
   ];
 
   return (
@@ -61,12 +63,22 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           <h2 className="funstuff-title">Fun Stuff</h2>
         </div>
 
-        {/* Three Cards Row */}
+        {/* Two-card grid */}
         <div className="cards-row">
           {funItems.map((item) => (
-            <div key={item.id} className="fun-card" onClick={() => setSelectedItem(item)}>
+            <div
+              key={item.id}
+              className="fun-card"
+              onClick={() => setSelectedItem(item)}
+            >
               <div className="card-image">
-                <ImageIcon size={32} />
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={80}
+                  height={100}
+                  className="avatar-image"
+                />
               </div>
               <h3 className="card-title">{item.title}</h3>
             </div>
@@ -83,18 +95,30 @@ Scholiast was more than just a class project. It was proof of how much can be ac
                 <span className="detail-title">Fun Stuff / {selectedItem.title}</span>
               </div>
               <div className="detail-buttons">
-                <span 
-                  className="detail-btn detail-close" 
+                <span
+                  className="detail-btn detail-close"
                   onClick={() => setSelectedItem(null)}
                   onMouseDown={(e) => e.stopPropagation()}
                 />
               </div>
             </div>
-            <div className="detail-content">
 
-                <div className="project-info">
-                  <h3 className="project-subtitle">{selectedItem.title}</h3>
-                  <p className="project-description">{selectedItem.content}</p>
+            <div className="detail-content">
+              <div className="project-info">
+                <div className="project-layout">
+                  <div className="project-image-col">
+                    <img
+                      src={selectedItem.image || '/fun-stuff/shot1.png'}
+                      alt="project hero"
+                      className="project-image-vertical"
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="project-text-col">
+                    <h3 className="project-subtitle">{selectedItem.title}</h3>
+                    <p className="project-description">{selectedItem.content}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -102,10 +126,27 @@ Scholiast was more than just a class project. It was proof of how much can be ac
       )}
 
       <style jsx>{`
+
+        .project-layout {
+          display: flex;
+          gap: 20px;
+        }
+
+        .project-text-col {
+          flex: 1;
+        }
+
+        .project-image-vertical {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          max-height: 75vh; /* prevent overflow */
+          image-rendering: pixelated;
+        }
+
         .funstuff-container {
           max-width: 600px;
           margin: 0 auto;
-          padding: 20px;
           background: #0b0b0b;
           overflow-y: auto;
         }
@@ -144,17 +185,11 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           flex-direction: column;
           justify-content: center;
           cursor: pointer;
-          height: 140px;
         }
 
-        .fun-card:hover {
-          transform: translateY(-2px);
-        }
+        .fun-card:hover { transform: translateY(-2px); }
 
         .card-image {
-          width: 50px;
-          height: 50px;
-          background: #F7F4C8;
           border: 2px solid #000000;
           display: flex;
           align-items: center;
@@ -163,6 +198,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           color: #000000;
         }
 
+        /* Multi-line clamp so titles don't get cut awkwardly */
         .card-title {
           color: #F7F4C8;
           font-size: 13px;
@@ -171,25 +207,23 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           text-transform: uppercase;
           letter-spacing: 0.5px;
           line-height: 1.2;
-          overflow: hidden;
-          text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3; /* show up to 3 lines */
+          overflow: hidden;
+          word-break: break-word;
         }
 
-        /* Modal Styles */
+        /* Modal */
         .detail-modal-overlay {
           position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          inset: 0;
           background: rgba(0, 0, 0, 0.8);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 1000;
-          padding: 20px;
+          padding: 10px;
         }
 
         .detail-modal-window {
@@ -199,10 +233,8 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
           position: relative;
           overflow: hidden;
-          min-width: 300px;
-          min-height: 200px;
-          max-width: 60vw;
-          max-height: 85vh;
+          width: min(1200px, 90vw);
+          max-height: 90vh;
         }
 
         .detail-titlebar {
@@ -213,6 +245,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
           justify-content: space-between;
           image-rendering: pixelated;
           cursor: grab;
+          border-bottom: 4px solid #f6e05e;
         }
         .detail-titlebar:active { cursor: grabbing; }
 
@@ -221,7 +254,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
         .detail-title {
           font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           font-weight: 700;
-          font-size: 24px;
+          font-size: 22px;
           letter-spacing: 0.2px;
           color: #f6e05e;
         }
@@ -236,100 +269,63 @@ Scholiast was more than just a class project. It was proof of how much can be ac
         .detail-close { background: #ff4d4d; }
 
         .detail-content {
-          max-height: 85vh; overflow: auto; padding: 16px; line-height: 1.4;
-          background: #141414; border: 4px solid #f6e05e; margin: 8px;
+          max-height: calc(85vh - 46px);
+          overflow: auto;
+          padding: 16px;
+          line-height: 1.5;
+          background: #141414;
           font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
           color: #F7F4C8;
         }
 
+        /* Smooth, visible scrollbar */
         .detail-content::-webkit-scrollbar { width: 12px; }
         .detail-content::-webkit-scrollbar-track { background: #0a0a0a; margin: 4px; }
         .detail-content::-webkit-scrollbar-thumb { background: #f6e05e; border: 2px solid #000000; }
         .detail-content::-webkit-scrollbar-thumb:hover { background: #f7f4c8; }
         .detail-content::-webkit-scrollbar-corner { background: #0a0a0a; }
 
-        .project-hero {
-          display: flex;
-          gap: 24px;
-          margin-bottom: 32px;
-          padding-bottom: 24px;
-          border-bottom: 1px solid #f6e05e;
-        }
+        .project-info { flex: 1; }
 
-        .project-info {
-          flex: 1;
-        }
-
-        .project-video {
-          flex-shrink: 0;
-          width: 300px;
-        }
-
-        .video-placeholder {
+        .project-image {
           width: 100%;
-          height: 200px;
-          background: rgba(246, 224, 94, 0.1);
+          max-height: 320px;
+          object-fit: cover;
+          margin-bottom: 16px;
           border: 2px solid #f6e05e;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: #f6e05e;
-          font-size: 14px;
+          image-rendering: pixelated;
+          background: rgba(246, 224, 94, 0.08);
         }
 
         .project-subtitle {
           color: #f6e05e;
-          font-size: 24px;
+          font-size: 22px;
           font-weight: 700;
-          margin: 0 0 16px 0;
+          margin: 0 0 12px 0;
           line-height: 1.3;
+          word-break: break-word;
         }
 
         .project-description {
-          line-height: 1.4;
           font-size: 14px;
           margin: 0;
           color: #F7F4C8;
-          white-space: pre-line;
+          white-space: pre-line; /* keep your paragraphs */
+          word-break: break-word; /* avoid overflow for long words/links */
         }
 
         @media (max-width: 768px) {
-          .funstuff-container {
-            padding: 15px;
-            height: auto;
-          }
-
+          .funstuff-container { padding: 15px; }
           .cards-row {
             grid-template-columns: 1fr;
             gap: 15px;
             height: auto;
           }
-
-          .fun-card {
-            aspect-ratio: 3/2;
-          }
-
-          .funstuff-title {
-            font-size: 20px;
-          }
-
-          .card-title {
-            font-size: 14px;
-          }
-
-          .banner-text {
-            font-size: 16px;
-          }
-
-          .project-hero {
-            flex-direction: column;
-            gap: 16px;
-          }
-
-          .project-video {
-            width: 100%;
-          }
+          .fun-card { aspect-ratio: 3/2; }
+          .funstuff-title { font-size: 20px; }
+          .card-title { font-size: 14px; }
+          .detail-modal-window { width: 92vw; }
+          .project-image { max-height: 240px; }
         }
       `}</style>
     </>
