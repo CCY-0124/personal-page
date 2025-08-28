@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Personal Page - Pixel Style",
+  title: "Tracy Chung - Personal Page",
   description: "A pixel-art style personal portfolio showcasing skills, projects, and experience",
   keywords: ["portfolio", "developer", "accessibility", "pixel art", "react", "next.js"],
   authors: [{ name: "Your Name" }],
