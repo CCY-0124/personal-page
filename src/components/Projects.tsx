@@ -106,8 +106,6 @@ const Projects: React.FC = () => {
       screenshots: [
         '/project-screenshots/algorithmic-trading/shot1.png',
         '/project-screenshots/algorithmic-trading/shot2.png',
-        '/project-screenshots/algorithmic-trading/shot3.png',
-        '/project-screenshots/algorithmic-trading/shot4.png'
       ],
       video: '/project-videos/trading-demo.mp4',
       longDescription:
@@ -197,8 +195,6 @@ const Projects: React.FC = () => {
       screenshots: [
         '/project-screenshots/personal-page/shot1.png',
         '/project-screenshots/personal-page/shot2.png',
-        '/project-screenshots/personal-page/shot3.png',
-        '/project-screenshots/personal-page/shot4.png'
       ],
       video: '/project-videos/personal-page-demo.mp4',
       longDescription:
@@ -240,9 +236,6 @@ const Projects: React.FC = () => {
       coverImage: '/project-screenshots/e-jobs-scraper/cover.png',
       screenshots: [
         '/project-screenshots/e-jobs-scraper/shot1.png',
-        '/project-screenshots/e-jobs-scraper/shot2.png',
-        '/project-screenshots/e-jobs-scraper/shot3.png',
-        '/project-screenshots/e-jobs-scraper/shot4.png'
       ],
       video: '/project-videos/scraper-demo.mp4',
       longDescription:
@@ -549,7 +542,6 @@ const Projects: React.FC = () => {
                           <span>Screenshot {idx + 1}</span>
                         </div>
                       )}
-                      <p className="screenshot-description">{`Screenshot ${idx + 1}`}</p>
                     </div>
                   ))}
                 </div>
