@@ -61,7 +61,7 @@ export default function PersonalPage() {
         };
       case 'projects':
         return { 
-          x: viewportWidth * 0.30, // 30% from left
+          x: viewportWidth * 0.20, // 30% from left
           y: viewportHeight * 0.10  
         };
       case 'about':
