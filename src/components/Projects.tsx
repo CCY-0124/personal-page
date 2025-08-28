@@ -40,13 +40,17 @@ const Projects: React.FC = () => {
     {
       id: 'no-plan-no-future',
       title: 'No Plan No Future',
-      tagline: 'Lifestyle & productivity app with smart scheduling and fitness tracking',
+      tagline: 'Lifestyle app with smart scheduling, task management, and fitness tracking',
       techStack: ['Next.js', 'React', 'Supabase', 'Tailwind', 'Typescript', 'Discord Webhooks'],
       description:
-        'A lifestyle management app that helps users organize daily activities, track fitness goals, and stay productive with integrated reminders and analytics.',
+        'A lifestyle management app that helps users organize tasks, daily activities, and fitness goals while staying productive with integrated reminders and analytics.',
       githubLink: 'https://github.com/the-scholiast/NoPlanNoFuture',
       demoLink: 'https://no-plan-no-future.vercel.app',
-      highlights: ['Bottom navigation', 'Statistics dashboard', 'Event reminders via Discord'],
+      highlights: [
+        'Mobile-friendly bottom navigation',
+        'Statistics dashboard',
+        'Event reminders via Discord'
+      ],
       coverImage: '/project-screenshots/no-plan-no-future/cover.png',
       screenshots: [
         '/project-screenshots/no-plan-no-future/shot1.png',
@@ -55,9 +59,10 @@ const Projects: React.FC = () => {
         '/project-screenshots/no-plan-no-future/shot4.png'
       ],
       longDescription:
-        'No Plan No Future is a comprehensive lifestyle management application designed to help users take control of their daily routines, fitness goals, and productivity. The app combines intuitive scheduling with powerful analytics to provide users with insights into their habits and progress. Built with modern web technologies, it offers a seamless experience across all devices with real-time synchronization and offline capabilities.',
+        'No Plan No Future is a comprehensive lifestyle management application designed to help users take control of their daily routines, tasks, fitness goals, and overall productivity. The app combines intuitive scheduling with powerful analytics to provide users with insights into their habits and progress. Built with modern web technologies, it offers a seamless experience across all devices with real-time synchronization and offline capabilities.',
       features: [
         'Intuitive drag-and-drop calendar interface',
+        'Task management with to-do lists and prioritization',
         'Fitness tracking with customizable workout plans',
         'Real-time statistics and progress visualization',
         'Discord integration for automated reminders',
@@ -72,7 +77,7 @@ const Projects: React.FC = () => {
     {
       id: 'algorithmic-trading',
       title: 'Algorithmic Trading System',
-      tagline: 'Automated crypto trading with real-time data and backtesting',
+      tagline: 'Automated crypto trading with backtesting, live execution, and performance analytics',
       techStack: [
         'Python',
         'Pandas',
@@ -85,20 +90,25 @@ const Projects: React.FC = () => {
         'PostgreSQL'
       ],
       description:
-        'An advanced cryptocurrency trading system with backtesting, risk management, and live execution. Handles real-time data ingestion and performance analytics.',
+        'An advanced cryptocurrency trading system with automated backtesting, strict risk management, and live execution. Handles real-time data ingestion, validation, and performance analytics.',
       githubLink: 'https://github.com/CCY-0124/Algo_Trading',
-      highlights: ['Automated strategy testing', 'Data validation pipeline', 'Parameter optimization'],
+      highlights: [
+        'Automated backtesting framework',
+        'Real-time data validation pipeline',
+        'Risk management and parameter optimization'
+      ],
       coverImage: '/project-screenshots/algorithmic-trading/cover.png',
       screenshots: [
         '/project-screenshots/algorithmic-trading/shot1.png',
-        '/project-screenshots/algorithmic-trading/shot2.png',
+        '/project-screenshots/algorithmic-trading/shot2.png'
       ],
       video: '/project-videos/trading-demo.mp4',
       longDescription:
-        'This algorithmic trading system represents a sophisticated approach to cryptocurrency trading, combining advanced mathematical models with real-time market data processing. The system is designed to identify profitable trading opportunities through pattern recognition and statistical analysis, while maintaining strict risk management protocols. It includes comprehensive backtesting capabilities and live trading execution with minimal latency.',
+        'This algorithmic trading system represents a sophisticated approach to cryptocurrency trading, combining advanced mathematical models with real-time market data processing. The system is designed to identify profitable trading opportunities through statistical analysis and live trading signals, while enforcing strict risk management protocols. It includes a comprehensive backtesting framework, data validation pipeline, and live execution with minimal latency.',
       features: [
         'Real-time market data ingestion from multiple exchanges',
-        'Advanced statistical analysis and pattern recognition',
+        'Data cleaning and validation pipeline',
+        'Advanced statistical analysis and trading signals',
         'Automated backtesting with historical data',
         'Risk management and position sizing algorithms',
         'Multi-exchange trading execution',
@@ -147,26 +157,32 @@ const Projects: React.FC = () => {
     {
       id: 'personal-page',
       title: 'Personal Page',
-      tagline: 'Retro-styled interactive portfolio with pixel art design',
-      techStack: ['Next.js', 'React', 'TypeScript', 'CSS Modules', 'Lucide Icons'],
+      tagline: 'Pixel-art interactive portfolio with retro game aesthetic and accessibility-focused design',
+      techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Lucide Icons'],
       description:
-        'A unique personal portfolio designed as a retro pixel interface. Features draggable windows, custom CSS animations, and modular design.',
+        'A unique personal portfolio designed as a retro pixel interface. Features draggable windows, smooth animations, and accessibility-focused interactions.',
       githubLink: 'https://github.com/CCY-0124/personal-page',
-      highlights: ['Draggable windows', 'Pixel art theme', 'Interactive navigation', 'Project showcase'],
+      highlights: [
+        'Pixel art themed draggable windows',
+        'Bottom navigation with pixel buttons',
+        'Accessibility features (keyboard & screen reader support)',
+        'Project showcase with interactive modals'
+      ],
       coverImage: '/project-screenshots/personal-page/cover.png',
       screenshots: [
         '/project-screenshots/personal-page/shot1.png',
-        '/project-screenshots/personal-page/shot2.png',
+        '/project-screenshots/personal-page/shot2.png'
       ],
       video: '/project-videos/personal-page-demo.mp4',
       longDescription:
-        'This personal portfolio website represents a unique approach to showcasing professional work through an interactive, pixel art-themed interface. The site features draggable windows that contain different sections of the portfolio, creating an engaging user experience that stands out from traditional portfolio designs. The implementation demonstrates advanced React patterns, state management, and creative CSS styling.',
+        'This personal portfolio website represents a unique approach to showcasing professional work through an interactive, pixel art–themed interface. The site features draggable windows that contain different sections of the portfolio, creating an engaging user experience that stands out from traditional portfolio designs. It emphasizes accessibility with keyboard navigation, ARIA labeling, screen reader support, and high-contrast visuals, while providing structured sections such as Skills, Projects, Experience, and Certificates. The implementation demonstrates advanced React patterns, state management, and creative Tailwind-based styling.',
       features: [
         'Draggable pixel art windows with custom styling',
         'Interactive navigation system with smooth transitions',
         'Comprehensive project showcase with detailed modals',
         'Responsive design that works across all devices',
-        'Custom CSS animations and hover effects',
+        'Custom animations and hover effects',
+        'Accessibility support with keyboard navigation and ARIA labels',
         'Modular component architecture for maintainability'
       ],
       date: '2025-07-02',
@@ -177,32 +193,38 @@ const Projects: React.FC = () => {
     {
       id: 'e-jobs-scraper',
       title: 'E-Jobs Web Scraper',
-      tagline: 'Smart scraper for BCIT job postings with alerts & filtering',
-      techStack: ['Python', 'BeautifulSoup', 'Requests', 'Asyncio', 'SQLite', 'Selenium'],
+      tagline: 'Notifier for BCIT job postings with Discord alerts and CSV export',
+      techStack: ['Python', 'Playwright', 'Requests', 'Pandas', 'BeautifulSoup', 'Dotenv'],
       description:
-        'A scraper that pulls job postings from BCITs career site, formats them for quick review, and supports automated alerts.',
+        'A tool that fetches job postings from BCIT’s eJOBS portal, saves them to CSV, and sends automated Discord notifications with intelligent filtering and de-duplication.',
       githubLink: 'https://github.com/yourusername/e-jobs-scraper',
-      highlights: ['Automated job extraction', 'Intelligent filtering', 'Email notifications'],
+      highlights: [
+        'Automated job posting extraction',
+        'Optional co-op filtering',
+        'Discord notifications with de-duplication'
+      ],
       coverImage: '/project-screenshots/e-jobs-scraper/cover.png',
       screenshots: [
-        '/project-screenshots/e-jobs-scraper/shot1.png',
+        '/project-screenshots/e-jobs-scraper/shot1.png'
       ],
       video: '/project-videos/scraper-demo.mp4',
       longDescription:
-        'The E-Jobs Web Scraper is an intelligent automation tool designed to streamline the job search process for students and alumni. By automatically monitoring career websites and extracting relevant job postings, it saves users hours of manual searching. The system includes intelligent filtering, notification systems, and data analysis to help users identify the best opportunities.',
+        'The E-Jobs Web Scraper is an intelligent automation tool designed to streamline the job search process for students and alumni. By automatically monitoring the BCIT eJOBS portal and extracting relevant postings, it saves hours of manual searching. The system features optional co-op filtering, CSV export for further analysis, and automated Discord notifications with de-duplication logic. It uses Playwright for session persistence, ensuring reliable scraping without repeated logins.',
       features: [
-        'Automated job posting extraction',
+        'Automated job posting extraction from BCIT eJOBS',
         'Intelligent filtering and categorization',
-        'Email notification system for new postings',
-        'Data analysis and trend reporting',
-        'Customizable search criteria',
-        'Export functionality for job applications'
+        'Discord webhook integration with de-duplication',
+        'CSV export for tracking and analysis',
+        'Optional co-op filtering via .env configuration',
+        'Session persistence with Playwright (state.json)',
+        'Customizable search criteria and scheduling support'
       ],
       date: '2025-08-01',
       category: 'Automation & Scripting',
       type: 'additional',
       author: 'personal'
     }
+    
   ];
 
   const formatDate = (dateString: string) => {
