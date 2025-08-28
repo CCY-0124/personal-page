@@ -7,6 +7,7 @@ import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
 import EmailPopup from './EmailPopup';
 import CloseAttemptPopup from "./CloseAttemptPopup";
+import { useLocalCounter } from '@/hooks/useLocalCounter'
 
 interface HomeProps {
   onFunStuffClick: () => void;
@@ -18,7 +19,6 @@ export default function Home({ onFunStuffClick }: HomeProps) {
   const [fontsReady, setFontsReady] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
-  const [attemptCount, setAttemptCount] = useState(0);
   const [showClosePopup, setShowClosePopup] = useState(false);
 
   // Wait for fonts
@@ -39,24 +39,13 @@ export default function Home({ onFunStuffClick }: HomeProps) {
     }
   }, [imgReady, fontsReady]);
 
-  useEffect(() => {
-    fetch("/api/close-attempts")
-      .then(r => r.json())
-      .then(d => setAttemptCount(d.count))
-      .catch(() => { });
-  }, []);
+  const { value: attempts, inc } = useLocalCounter('closeAttempts', 0)
 
-  const onCloseAttempt = async () => {
-    try {
-      const res = await fetch("/api/close-attempts", { method: "POST" });
-      const data = await res.json();
-      setAttemptCount(data.count);     // 
-      setShowClosePopup(true);
-    } catch {
-      setAttemptCount(c => c + 1);
-      setShowClosePopup(true);
-    }
-  };
+  const onCloseAttempt = () => {
+    inc(1) // 每次增加 1
+    setShowClosePopup(true)
+  }
+
 
   return (
     <div className="home-wrapper">
@@ -103,7 +92,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
             <CloseAttemptPopup
               open={showClosePopup}
               onClose={() => setShowClosePopup(false)}
-              count={attemptCount}
+              count={attempts}
             />
             <div className="home-content">
               {/* Left side - Avatar */}
