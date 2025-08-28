@@ -27,8 +27,6 @@ interface Project {
   youtubeId?: string;        // only scholist
   longDescription: string;
   features: string[];
-  challenges: string[];
-  learnings: string[];
   date: string;
   category: string;
   type: 'main' | 'additional';
@@ -43,7 +41,7 @@ const Projects: React.FC = () => {
       id: 'no-plan-no-future',
       title: 'No Plan No Future',
       tagline: 'Lifestyle & productivity app with smart scheduling and fitness tracking',
-      techStack: ['Next.js', 'React', 'Supabase', 'Tailwind', 'Recharts', 'Discord Webhooks'],
+      techStack: ['Next.js', 'React', 'Supabase', 'Tailwind', 'Typescript', 'Discord Webhooks'],
       description:
         'A lifestyle management app that helps users organize daily activities, track fitness goals, and stay productive with integrated reminders and analytics.',
       githubLink: 'https://github.com/the-scholiast/NoPlanNoFuture',
@@ -65,18 +63,6 @@ const Projects: React.FC = () => {
         'Discord integration for automated reminders',
         'Responsive design for mobile and desktop',
         'Offline functionality with data synchronization'
-      ],
-      challenges: [
-        'Implementing real-time data synchronization across devices',
-        'Designing an intuitive UI for complex scheduling workflows',
-        'Optimizing performance for large datasets',
-        'Integrating third-party APIs while maintaining security'
-      ],
-      learnings: [
-        'Advanced state management with React Context and Redux',
-        'Real-time data handling with WebSockets',
-        'Performance optimization techniques for React applications',
-        'User experience design principles for productivity apps'
       ],
       date: '2025-08-02',
       category: 'Full-Stack & Web Development',
@@ -118,18 +104,6 @@ const Projects: React.FC = () => {
         'Multi-exchange trading execution',
         'Comprehensive performance analytics dashboard'
       ],
-      challenges: [
-        'Handling high-frequency data streams with minimal latency',
-        'Implementing robust error handling for exchange APIs',
-        'Designing scalable architecture for real-time processing',
-        'Ensuring data accuracy and consistency across sources'
-      ],
-      learnings: [
-        'High-performance Python programming techniques',
-        'Financial data analysis and statistical modeling',
-        'System architecture for real-time applications',
-        'Risk management in algorithmic trading'
-      ],
       date: '2025-08-02',
       category: 'Data & Analytics',
       type: 'main',
@@ -165,18 +139,6 @@ const Projects: React.FC = () => {
         'Real-time collaboration tools',
         'Mobile-responsive design for on-the-go access'
       ],
-      challenges: [
-        'Designing an intuitive file management system',
-        'Implementing real-time collaboration features',
-        'Ensuring data security for academic materials',
-        'Creating a scalable architecture for multiple institutions'
-      ],
-      learnings: [
-        'Full-stack development with MERN stack',
-        'Real-time collaboration implementation',
-        'File upload and management systems',
-        'User experience design for educational applications'
-      ],
       date: '2025-05-02',
       category: 'Full-Stack & Web Development',
       type: 'main',
@@ -207,18 +169,6 @@ const Projects: React.FC = () => {
         'Custom CSS animations and hover effects',
         'Modular component architecture for maintainability'
       ],
-      challenges: [
-        'Implementing smooth drag-and-drop functionality for windows',
-        'Creating consistent pixel art styling across all components',
-        'Managing complex state for multiple draggable windows',
-        'Ensuring responsive design while maintaining visual integrity'
-      ],
-      learnings: [
-        'Advanced React patterns and component composition',
-        'CSS Grid and Flexbox for complex layouts',
-        'State management for interactive UI elements',
-        'Creative design implementation with technical constraints'
-      ],
       date: '2025-07-02',
       category: 'Creative & Design',
       type: 'additional',
@@ -247,18 +197,6 @@ const Projects: React.FC = () => {
         'Data analysis and trend reporting',
         'Customizable search criteria',
         'Export functionality for job applications'
-      ],
-      challenges: [
-        'Handling dynamic content and JavaScript-rendered pages',
-        'Implementing respectful scraping practices',
-        'Managing large datasets efficiently',
-        'Ensuring data accuracy and completeness'
-      ],
-      learnings: [
-        'Web scraping techniques and best practices',
-        'Asynchronous programming with Python',
-        'Data processing and analysis',
-        'Automation and workflow optimization'
       ],
       date: '2025-08-01',
       category: 'Automation & Scripting',
