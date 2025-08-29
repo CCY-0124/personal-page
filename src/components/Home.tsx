@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useAssetPath } from '@/hooks/useAssetPath';
 import PixelWindow from './PixelWindow';
 import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
@@ -14,6 +15,7 @@ interface HomeProps {
 }
 
 export default function Home({ onFunStuffClick }: HomeProps) {
+  const asset = useAssetPath();
   // --- Loading Gate ---
   const [imgReady, setImgReady] = useState(false);
   const [fontsReady, setFontsReady] = useState(false);
@@ -99,7 +101,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
               <div className="avatar-section">
                 <div className="avatar-container">
                   <Image
-                    src="/avatar.png"
+                    src={asset('/avatar.png')}
                     alt="Tracy Chung"
                     width={280}
                     height={280}

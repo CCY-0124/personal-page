@@ -21,12 +21,17 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 fs.mkdirSync(TARGET_DIR, { recursive: true });
 
-copyDir(path.join(OUT, '_next'), path.join(TARGET_DIR, '_next'));
-copyDir(path.join(OUT, 'assets'), path.join(TARGET_DIR, 'assets'));
-
-for (const f of ['favicon.ico', 'robots.txt', 'sitemap.xml']) {
-    const src = path.join(OUT, f);
-    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(TARGET_DIR, f));
+// Copy all top-level entries into the subfolder, except the subfolder itself
+for (const entry of fs.readdirSync(OUT)) {
+  if (entry === SUB || entry === '.nojekyll') continue;
+  const src = path.join(OUT, entry);
+  const dest = path.join(TARGET_DIR, entry);
+  const stat = fs.statSync(src);
+  if (stat.isDirectory()) {
+    copyDir(src, dest);
+  } else {
+    fs.copyFileSync(src, dest);
+  }
 }
 
 console.log('Prepared for GitHub Pages: .nojekyll + assets duplicated into /personal-page');

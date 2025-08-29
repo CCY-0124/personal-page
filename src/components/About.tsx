@@ -3,14 +3,16 @@
 import React from 'react';
 import { User, GraduationCap, Languages, BookOpen, TrendingUp, Palette } from 'lucide-react';
 import Image from 'next/image';
+import { useAssetPath } from '@/hooks/useAssetPath';
 
 const About: React.FC = () => {
+  const asset = useAssetPath();
   return (
     <>
       <div className="about-header">
         <div className="avatar-circle">
         <Image
-          src="/avatar1.png"
+          src={asset('/avatar1.png')}
           alt="Tracy Chung"
           width={80}
           height={80}

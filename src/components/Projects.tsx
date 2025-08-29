@@ -11,6 +11,7 @@ import {
   Diamond,
   MousePointerClick
 } from 'lucide-react';
+import { useAssetPath } from '@/hooks/useAssetPath';
 
 interface Project {
   id: string;
@@ -34,6 +35,7 @@ interface Project {
 }
 
 const Projects: React.FC = () => {
+  const asset = useAssetPath();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
@@ -311,7 +313,7 @@ const Projects: React.FC = () => {
                   <div className="post-image">
                     {project.coverImage ? (
                       <img
-                        src={project.coverImage}
+                        src={asset(project.coverImage)}
                         alt={`${project.title} cover`}
                         className="screenshot-img"  /* 4:3 cover */
                         loading="lazy"
@@ -434,14 +436,14 @@ const Projects: React.FC = () => {
                     </div>
                   ) : selectedProject.coverImage ? (
                     <img
-                      src={selectedProject.coverImage}
+                      src={asset(selectedProject.coverImage!)}
                       alt={`${selectedProject.title} cover`}
                       className="screenshot-img"  /* keep 4:3 for hero/cover */
                       loading="lazy"
                     />
                   ) : selectedProject.screenshots?.[0] ? (
                     <img
-                      src={selectedProject.screenshots[0]}
+                      src={asset(selectedProject.screenshots[0])}
                       alt={`${selectedProject.title} screenshot`}
                       className="screenshot-img"  /* still 4:3 in hero area */
                       loading="lazy"
@@ -491,7 +493,7 @@ const Projects: React.FC = () => {
                     <div key={idx} className="screenshot-item">
                       {src ? (
                         <img
-                          src={src}
+                          src={asset(src)}
                           alt={`${selectedProject.title} screenshot ${idx + 1}`}
                           className="gallery-img"   /* 16:9 for gallery only */
                           loading="lazy"
@@ -624,8 +626,7 @@ const Projects: React.FC = () => {
           width: 200px;
           aspect-ratio: 4 / 3; /* cover preview in list */
           object-fit: cover;
-          border: 2px solid #000000;
-          background: #000000;
+
         }
 
         .image-placeholder {
@@ -646,9 +647,9 @@ const Projects: React.FC = () => {
           width: 100%;
           aspect-ratio: 4 / 3;
           object-fit: cover;
-          border: 2px solid #000;
+
           display: block;
-          background: #000;
+
         }
 
         .post-description { flex: 1; }

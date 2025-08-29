@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
+import { useAssetPath } from '@/hooks/useAssetPath';
 
 interface FunItem {
   id: string;
@@ -14,6 +15,7 @@ interface FunItem {
 }
 
 const FunStuff: React.FC = () => {
+  const asset = useAssetPath();
   const [selectedItem, setSelectedItem] = useState<FunItem | null>(null);
 
   const funItems: FunItem[] = [
@@ -73,7 +75,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
             >
               <div className="card-image">
                 <Image
-                  src={item.icon}
+                  src={asset(item.icon)}
                   alt={item.title}
                   width={80}
                   height={100}
@@ -108,7 +110,7 @@ Scholiast was more than just a class project. It was proof of how much can be ac
                 <div className="project-layout">
                   <div className="project-image-col">
                     <img
-                      src={selectedItem.image || '/fun-stuff/shot1.png'}
+                      src={asset(selectedItem.image || '/fun-stuff/shot1.png')}
                       alt="project hero"
                       className="project-image-vertical"
                       loading="eager"
@@ -190,12 +192,12 @@ Scholiast was more than just a class project. It was proof of how much can be ac
         .fun-card:hover { transform: translateY(-2px); }
 
         .card-image {
-          border: 2px solid #000000;
+
           display: flex;
           align-items: center;
           justify-content: center;
           margin: 0 auto 10px;
-          color: #000000;
+
         }
 
         /* Multi-line clamp so titles don't get cut awkwardly */

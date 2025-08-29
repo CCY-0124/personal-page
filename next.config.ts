@@ -7,4 +7,8 @@ module.exports = {
   basePath: isProd ? `/${repo}` : '',
   assetPrefix: isProd ? `/${repo}/` : '',
   images: { unoptimized: true },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : '',
+  },
+  turbopack: { root: __dirname },
 }
