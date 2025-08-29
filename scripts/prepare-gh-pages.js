@@ -1,4 +1,3 @@
-// Create out/.nojekyll and copy root assets into /personal-page/
 const fs = require('fs');
 const path = require('path');
 
@@ -11,7 +10,6 @@ fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 fs.mkdirSync(TARGET, { recursive: true });
 
-// file types you want accessible under /personal-page/
 const exts = new Set([
     '.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico',
     '.ttf', '.otf', '.woff', '.woff2', '.eot', '.txt', '.json'
@@ -24,4 +22,5 @@ for (const entry of fs.readdirSync(OUT)) {
     }
 }
 
-console.log('Prepared for GitHub Pages: .nojekyll + duplicated assets into /' + REPO);
+console.log('Prepared for GitHub Pages: .nojekyll + assets duplicated into /' + REPO);
+

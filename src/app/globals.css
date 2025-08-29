@@ -43,7 +43,7 @@ body {
 body {
   color: rgb(var(--color-foreground));
   position: relative;
-  background-image: url('/background.png');
+  background-image: url('/personal-page/background.png');
   background-size: auto;
   background-position: center;
   background-repeat: repeat;
