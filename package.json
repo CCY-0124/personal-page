@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint",
-    "deploy": "npm run build && gh-pages -d out"
+    "predeploy": "node -e \"require('fs').mkdirSync('out',{recursive:true}); require('fs').writeFileSync('out/.nojekyll','')\"",
+    "deploy": "npm run build && npm run predeploy && gh-pages -d out"
   },
   "dependencies": {
     "lucide-react": "^0.540.0",
