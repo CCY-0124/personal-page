@@ -2,25 +2,32 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT = path.join(__dirname, '..', 'out');
-const REPO = 'personal-page';
-const TARGET = path.join(OUT, REPO);
+const SUB = 'personal-page'; 
+const TARGET_DIR = path.join(OUT, SUB);
 
-fs.mkdirSync(OUT, { recursive: true });
-fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
-
-fs.mkdirSync(TARGET, { recursive: true });
-
-const exts = new Set([
-    '.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.ico',
-    '.ttf', '.otf', '.woff', '.woff2', '.eot', '.txt', '.json'
-]);
-
-for (const entry of fs.readdirSync(OUT)) {
-    const src = path.join(OUT, entry);
-    if (fs.statSync(src).isFile() && exts.has(path.extname(entry).toLowerCase())) {
-        fs.copyFileSync(src, path.join(TARGET, entry));
+function copyDir(src, dest) {
+    if (!fs.existsSync(src)) return;
+    fs.mkdirSync(dest, { recursive: true });
+    for (const entry of fs.readdirSync(src)) {
+        const s = path.join(src, entry);
+        const d = path.join(dest, entry);
+        const stat = fs.statSync(s);
+        if (stat.isDirectory()) copyDir(s, d);
+        else fs.copyFileSync(s, d);
     }
 }
 
-console.log('Prepared for GitHub Pages: .nojekyll + assets duplicated into /' + REPO);
+fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
+
+fs.mkdirSync(TARGET_DIR, { recursive: true });
+
+copyDir(path.join(OUT, '_next'), path.join(TARGET_DIR, '_next'));
+copyDir(path.join(OUT, 'assets'), path.join(TARGET_DIR, 'assets'));
+
+for (const f of ['favicon.ico', 'robots.txt', 'sitemap.xml']) {
+    const src = path.join(OUT, f);
+    if (fs.existsSync(src)) fs.copyFileSync(src, path.join(TARGET_DIR, f));
+}
+
+console.log('Prepared for GitHub Pages: .nojekyll + assets duplicated into /personal-page');
 
