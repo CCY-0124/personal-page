@@ -8,7 +8,7 @@ import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
 import EmailPopup from './EmailPopup';
 import CloseAttemptPopup from "./CloseAttemptPopup";
-import { useLocalCounter } from '@/hooks/useLocalCounter'
+
 import { getClicks, incrClick } from '@/lib/app';
 
 interface HomeProps {
