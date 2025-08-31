@@ -44,7 +44,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
   const { value: attempts, inc } = useLocalCounter('closeAttempts', 0)
 
   const onCloseAttempt = () => {
-    inc(1) // 每次增加 1
+    inc(1) 
     setShowClosePopup(true)
   }
 

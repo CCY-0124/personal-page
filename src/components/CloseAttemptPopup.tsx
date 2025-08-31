@@ -3,6 +3,7 @@ import React from 'react';
 import { AlertTriangle, Send } from 'lucide-react';
 import DraggablePixelWindow from './DraggablePixelWindow';
 import Image from 'next/image';
+import { useAssetPath } from '@/hooks/useAssetPath';
 
 type Props = {
     open: boolean;
@@ -17,6 +18,9 @@ function toOrdinal(n: number) {
 }
 
 export default function CloseAttemptPopup({ open, onClose, count }: Props) {
+
+    const asset = useAssetPath();
+
     if (!open) return null;
 
     return (
@@ -40,7 +44,7 @@ export default function CloseAttemptPopup({ open, onClose, count }: Props) {
                 <div style={{ color: '#f7f4c8' }}>
                     <div className="avatar-container justify-center flex">
                         <Image
-                        src="/cry.png"
+                        src={asset('/cry.png')}
                         alt="Tracy Chung"
                         width={200}
                         height={200}
