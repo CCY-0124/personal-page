@@ -8,7 +8,8 @@ import { Github, Linkedin, Mail, Star } from 'lucide-react';
 import RotatingTrailingEffect from './RotatingTrailingEffect';
 import EmailPopup from './EmailPopup';
 import CloseAttemptPopup from "./CloseAttemptPopup";
-import { useLocalCounter } from '@/hooks/useLocalCounter'
+
+import { getClicks, incrClick } from '@/lib/app';
 
 interface HomeProps {
   onFunStuffClick: () => void;
@@ -22,6 +23,19 @@ export default function Home({ onFunStuffClick }: HomeProps) {
   const [isReady, setIsReady] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const [showClosePopup, setShowClosePopup] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Check if viewport is too small for proper display
+  useEffect(() => {
+    const checkViewport = () => {
+      const isSmall = window.innerWidth < 768 || window.innerHeight < 600;
+      setIsMobileView(isSmall);
+    };
+
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
+  }, []);
 
   // Wait for fonts
   useEffect(() => {
@@ -41,11 +55,77 @@ export default function Home({ onFunStuffClick }: HomeProps) {
     }
   }, [imgReady, fontsReady]);
 
-  const { value: attempts, inc } = useLocalCounter('closeAttempts', 0)
+  const [attempts, setAttempts] = useState<number>(0);
 
-  const onCloseAttempt = () => {
-    inc(1) 
-    setShowClosePopup(true)
+  // Fetch initial value on component load
+  useEffect(() => {
+    getClicks().then((d: { clicks: number }) => setAttempts(d.clicks)).catch(() => {});
+  }, []);
+
+  const onCloseAttempt = async () => {
+    try {
+      const d: { clicks: number } = await incrClick();   // Call backend
+      setAttempts(d.clicks);         // Sync with server latest number
+    } catch {
+      setAttempts(a => a + 1);       // Fallback to local +1 if failed
+    } finally {
+      setShowClosePopup(true);       // Open popup
+    }
+  };
+
+  // If mobile view, show full screen message
+  if (isMobileView) {
+    return (
+      <div className="mobile-message">
+        <div className="message-content">
+          <h2>Please Open in Full Screen</h2>
+          <p>This portfolio is designed for desktop viewing. Please open this page in a larger window or full screen for the best experience.</p>
+          <button onClick={() => window.location.reload()} className="refresh-btn">
+            Refresh After Resizing
+          </button>
+        </div>
+        <style jsx>{`
+          .mobile-message {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            color: #F7F4C8;
+            text-align: center;
+            padding: 20px;
+          }
+          .message-content {
+            max-width: 400px;
+          }
+          .message-content h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #f6e05e;
+          }
+          .message-content p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+          }
+          .refresh-btn {
+            background: #f6e05e;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          }
+          .refresh-btn:hover {
+            background: #f7f4c8;
+            transform: translateY(-2px);
+          }
+        `}</style>
+      </div>
+    );
   }
 
 
