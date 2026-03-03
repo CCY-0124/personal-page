@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { User, GraduationCap, Languages, BookOpen, TrendingUp, Palette } from 'lucide-react';
+import { GraduationCap, Languages, BookOpen, TrendingUp, Palette } from 'lucide-react';
 import Image from 'next/image';
 import { useAssetPath } from '@/hooks/useAssetPath';
 
@@ -38,14 +38,16 @@ const About: React.FC = () => {
             </div>
             <div className="card-content">
               <div className="info-item">
-                <div className="info-label">BCIT - Computer Systems Technology</div>
+                <div className="info-label">BCIT - Computer Systems Technology (CST) Diploma</div>
+                <div className="info-value">Jan 2025 - Present</div>
               </div>
               <div className="info-item">
-                <div className="info-label">HKSYU - Counseling and Psychology</div>
+                <div className="info-label">Hong Kong Shue Yan University - Bachelor of Social Sciences (Hons) in Counselling and Psychology</div>
+                <div className="info-value">2015 - 2019</div>
               </div>
             </div>
           </div>
-          
+
           <div className="info-card">
             <div className="card-header">
               <Languages size={20} className="card-icon" />
