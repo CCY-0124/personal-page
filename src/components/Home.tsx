@@ -239,7 +239,7 @@ export default function Home({ onFunStuffClick }: HomeProps) {
                   <EmailPopup
                       open={showEmail}
                       onClose={() => setShowEmail(false)}
-                      email="cchung109@my.bcit.ca"
+                      email="chuiyingchungccy@gmail.com"
                     />
                 </div>
               </div>

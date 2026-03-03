@@ -57,7 +57,7 @@ export default function CloseAttemptPopup({ open, onClose, count }: Props) {
                     <p className="opacity-80 flex gap-2">
                         What&apos;s wrong with it? Send me an email to tell me why 
                         <a
-                            href={`mailto:cchung109@my.bcit.ca`}
+                            href={`mailto:chuiyingchungccy@gmail.com`}
                             className="px-3 py-1 font-extrabold rounded-xl p-3"
                             style={{ color: '#f7f4c8', padding: '2px'}}
                         >
