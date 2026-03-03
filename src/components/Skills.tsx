@@ -22,7 +22,6 @@ import {
   Layers,
   Package,
   Box,
-  Activity,
   TrendingUp,
   Brain,
   Users,
@@ -47,37 +46,64 @@ const Skills: React.FC = () => {
       title: 'Languages',
       items: [
         { name: 'Python', icon: <Terminal size={20} /> },
+        { name: 'SQL', icon: <Database size={20} /> },
         { name: 'JavaScript', icon: <Code size={20} /> },
         { name: 'TypeScript', icon: <Code size={20} /> },
-        { name: 'SQL', icon: <Database size={20} /> },
-
-      ]
-    },
-    {
-      title: 'Frameworks / Libraries',
-      items: [
-        { name: 'React', icon: <Circle size={20} /> },
-        { name: 'Next.js', icon: <Square size={20} /> },
-        { name: 'Node.js', icon: <Server size={20} /> },
-        { name: 'Express', icon: <Package size={20} /> },
-        { name: 'Tailwind', icon: <Triangle size={20} /> }
-      ]
-    },
-    {
-      title: 'Backend & Data',
-      items: [
-        { name: 'MongoDB', icon: <Database size={20} /> },
-        { name: 'Supabase', icon: <Cloud size={20} /> },
-        { name: 'AWS Lightsail', icon: <Server size={20} /> },
-        { name: 'PostgreSQL', icon: <Database size={20} /> }
+        { name: 'Java', icon: <Code size={20} /> },
+        { name: 'C', icon: <Terminal size={20} /> },
+        { name: 'HTML', icon: <Globe size={20} /> },
+        { name: 'CSS', icon: <Palette size={20} /> },
+        { name: 'Bash', icon: <Terminal size={20} /> }
       ]
     },
     {
       title: 'Tools',
       items: [
-        { name: 'GitHub', icon: <GitBranch size={20} /> },
-        { name: 'Jupyter', icon: <FileText size={20} /> },
-        { name: 'Figma', icon: <Palette size={20} /> }
+        { name: 'Docker', icon: <Package size={20} /> },
+        { name: 'Git/GitHub', icon: <GitBranch size={20} /> },
+        { name: 'VM', icon: <Server size={20} /> },
+        { name: 'Cisco', icon: <Settings size={20} /> },
+        { name: 'Linux', icon: <Terminal size={20} /> },
+        { name: 'macOS', icon: <Monitor size={20} /> },
+        { name: 'Windows', icon: <Monitor size={20} /> },
+        { name: 'Server Administration', icon: <Server size={20} /> }
+      ]
+    },
+    {
+      title: 'AI & Machine Learning',
+      items: [
+        { name: 'Local LLM Setup', icon: <Brain size={20} /> },
+        { name: 'AI APIs', icon: <Zap size={20} /> },
+        { name: 'Vector Embeddings', icon: <Layers size={20} /> },
+        { name: 'RAG System', icon: <Library size={20} /> }
+      ]
+    },
+    {
+      title: 'Embedded & Hardware',
+      items: [
+        { name: 'Raspberry Pi', icon: <Cpu size={20} /> },
+        { name: 'E-Paper Displays', icon: <Monitor size={20} /> },
+        { name: 'Handheld Devices', icon: <Box size={20} /> },
+        { name: 'PC Build & Troubleshooting', icon: <Cpu size={20} /> }
+      ]
+    },
+    {
+      title: 'Web & Frameworks',
+      items: [
+        { name: 'React', icon: <Circle size={20} /> },
+        { name: 'Node.js', icon: <Server size={20} /> },
+        { name: 'Next.js', icon: <Square size={20} /> },
+        { name: 'Tailwind CSS', icon: <Triangle size={20} /> },
+        { name: 'Bootstrap', icon: <Layers size={20} /> }
+      ]
+    },
+    {
+      title: 'Databases',
+      items: [
+        { name: 'PostgreSQL', icon: <Database size={20} /> },
+        { name: 'MongoDB', icon: <Database size={20} /> },
+        { name: 'Firebase', icon: <Cloud size={20} /> },
+        { name: 'Supabase', icon: <Cloud size={20} /> }
       ]
     }
   ];
@@ -87,11 +113,6 @@ const Skills: React.FC = () => {
       name: 'Data Analysis', 
       icon: <BarChart3 size={20} />,
       description: 'Statistical analysis, data visualization, and extracting actionable insights using Pandas, NumPy, SciPy, Matplotlib, Plotly, SQL, and Jupyter Notebook.'
-    },
-    { 
-      name: 'Hardware & Robotics', 
-      icon: <Cpu size={20} />,
-      description: 'PC building, hardware troubleshooting, system maintenance, and hands-on robotics projects with sensors and automation.'
     },
     { 
       name: 'Design & Marketing', 
@@ -210,34 +231,35 @@ const Skills: React.FC = () => {
 
          .category-title {
            color: #F7F4C8;
-           font-size: 20px;
+           font-size: 18px;
            font-weight: 700;
            text-transform: uppercase;
            letter-spacing: 2px;
            text-align: left;
-           width: 200px;
+           width: 180px;
            flex-shrink: 0;
            display: flex;
            align-items: center;
-           height: 60px;
+           min-height: 44px;
          }
 
                   .skill-items {
            display: flex;
            flex-wrap: wrap;
-           gap: 12px;
+           gap: 8px;
            flex: 1;
+           align-items: center;
          }
 
                  .skill-item {
            display: flex;
            flex-direction: column;
            align-items: center;
-           gap: 4px;
+           gap: 2px;
            border: 2px solid #F7F4C8;
-           padding: 6px 10px;
-           min-width: 70px;
-           height: 50px;
+           padding: 4px 8px;
+           min-width: 58px;
+           height: 42px;
            justify-content: center;
            transition: all 0.2s ease;
          }
@@ -275,11 +297,11 @@ const Skills: React.FC = () => {
         /* Tech Skills specific styling */
         .tech-skills-section .skill-name {
           color: #F7F4C8;
-          font-size: 14px;
+          font-size: 11px;
           font-weight: 700;
           text-align: center;
           text-transform: uppercase;
-          letter-spacing: 1.5px;
+          letter-spacing: 0.5px;
         }
 
         .tech-skills-section .skill-item:hover .skill-name {
@@ -366,12 +388,13 @@ const Skills: React.FC = () => {
           }
 
           .skill-item {
-            padding: 8px 12px;
-            min-width: 70px;
+            padding: 4px 8px;
+            min-width: 58px;
+            height: 42px;
           }
 
           .tech-skills-section .skill-name {
-            font-size: 12px;
+            font-size: 10px;
           }
 
           .additional-skills-section .skill-name {
