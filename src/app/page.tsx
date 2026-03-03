@@ -5,7 +5,7 @@ import { Code, FolderOpen, User, Briefcase, Award, Star } from 'lucide-react';
 import Home from '@/components/Home';
 import Navigation from '@/components/Navigation';
 import DraggablePixelWindow from '@/components/DraggablePixelWindow';
-import SkillsNew from '@/components/SkillsNew';
+import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
@@ -140,7 +140,7 @@ export default function PersonalPage() {
   const renderSectionContent = (section: string) => {
     switch (section) {
       case 'skills':
-        return <SkillsNew />;
+        return <Skills />;
       case 'projects':
         return <Projects />;
       case 'about':
