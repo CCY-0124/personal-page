@@ -1,40 +1,64 @@
 'use client';
 
 import React from 'react';
-import { Briefcase, Code, Shield, Heart } from 'lucide-react';
+import { Briefcase, Code, Shield, Heart, Truck } from 'lucide-react';
 
 const Experience: React.FC = () => {
   const experiences = [
     {
-      title: 'Robotics & Coding Coach & Marketing Designer',
-      company: 'Zebra Robotics',
-      duration: '2025 – Present',
+      title: 'Junior Analyst',
+      company: 'York House School',
+      duration: 'Jan 2026 – Present',
       keyPoints: [
-        'Teach students programming in Python, Scratch, and MakeCode',
-        'Guide hands-on projects with LEGO robotics and problem-solving challenges',
-        'Contributed to a startup franchise: designed posters, created promotional materials, and supported brand development'
+        'AI-Integrated Development: Developed and deployed corporate web tools and applications utilizing Docker containers; integrated Local LLMs and AI APIs to automate workflows and enhance system intelligence.',
+        'Knowledge Base Deployment: Deployed and maintained a BookStack (Wiki) instance for over 1,000 daily users; implemented AI-powered search tools using embeddings, resulting in a 75% increase in search result accuracy.',
+        'Infrastructure Management: Managed core IT infrastructure including server maintenance, internet setup, and virtual machine (VM) provisioning; utilized Cisco Meraki for network administration and Mosyle for device management across macOS/Windows/Linux environments.'
+      ],
+      icon: <Briefcase size={20} className="text-yellow-400" />
+    },
+    {
+      title: 'Robotics and Coding Coach',
+      company: 'Zebra Robotics',
+      duration: 'July 2025 – Present',
+      keyPoints: [
+        'Taught 5–10 students in grades 1–6 programming using Python, Scratch, and MakeCode through LEGO robotics, fostering computational thinking and teamwork.',
+        'Designed and adapted lesson plans by grade level to strengthen problem-solving skills and support diverse learning styles.',
+        'Communicated with parents through weekly progress reports, ensuring alignment with student learning goals.',
+        'Built and executed brand strategy for new market expansion using Canva and social media, achieving 75% conversion from open house/trials and 100% retention, contributing to 30% local enrollment growth.'
       ],
       icon: <Code size={20} className="text-yellow-400" />
     },
     {
       title: 'Fraud Analyst',
       company: 'RBC',
-      duration: '2023 – 2024',
+      duration: 'Oct 2023 – Nov 2024',
       keyPoints: [
-        'Analyzed large data sets to detect fraud patterns and suspicious activity',
-        'Used case management systems to investigate and resolve incidents',
-        'Collaborated with teams to improve fraud detection workflows and security measures'
+        'Investigated and resolved 30–40 fraud cases daily using Excel and RBC\'s internal TS2 system, achieving 99.5% accuracy under 10-minute SLAs.',
+        'Collaborated with compliance, risk, and external partners to optimize workflows, reducing average case resolution time by 20%.',
+        'Delivered empathetic client service during fraud incidents, maintaining a top 5 KPI ranking in department performance.',
+        'Ensured accuracy across 800+ monthly cases with an error rate of <0.5%, strengthening customer trust and operational reliability.'
       ],
       icon: <Shield size={20} className="text-yellow-400" />
     },
     {
-      title: 'Counselor',
-      company: 'CHECSS',
-      duration: '2019-2022',
+      title: 'Traffic Coordinator',
+      company: 'DB Schenker of Canada',
+      duration: 'Dec 2022 – Sep 2023',
       keyPoints: [
-        'Background in psychology and counselling with focus on interpersonal skills',
-        'Provided guidance and support in learning, motivation, and communication',
-        'Experience applying counseling techniques to help individuals build confidence and self-discipline'
+        'Supported global clients by resolving logistics inquiries via phone/email, maintaining 95%+ first-contact resolution and 90% customer satisfaction.',
+        'Coordinated freight schedules with international suppliers/customers, ensuring 98% on-time delivery for 40 weekly shipments.',
+        'Monitored orders using DB Schenker\'s logistics tracking system, troubleshooting discrepancies and documenting resolutions to streamline team communication.'
+      ],
+      icon: <Truck size={20} className="text-yellow-400" />
+    },
+    {
+      title: 'Counselor',
+      company: 'Choi Hung Estate Catholic Secondary School',
+      duration: 'Sep 2019 – Apr 2022',
+      keyPoints: [
+        'Supported 150+ students with empathetic, detail-oriented service, combining interpersonal communication with accurate case documentation across weekly sessions.',
+        'Collected and analyzed student performance and attendance data to drive evidence-based decisions, identifying issues early and tailoring effective interventions.',
+        'Applied problem-solving and customer service skills to design personalized plans, improving academic outcomes, emotional well-being, and reducing absenteeism.'
       ],
       icon: <Heart size={20} className="text-yellow-400" />
     }
