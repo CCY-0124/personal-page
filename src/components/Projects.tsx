@@ -30,7 +30,7 @@ interface Project {
   features: string[];
   date: string;
   category: string;
-  type: 'main' | 'additional';
+  type: 'main' | 'freelance' | 'additional';
   author: 'personal' | 'group';
 }
 
@@ -53,12 +53,12 @@ const Projects: React.FC = () => {
         'Statistics dashboard',
         'Event reminders via Discord'
       ],
-      coverImage: '/project-screenshots/no-plan-no-future/cover.png',
+      coverImage: '/project-screenshots/no-plan-no-future/Cover.png',
       screenshots: [
-        '/project-screenshots/no-plan-no-future/shot1.png',
-        '/project-screenshots/no-plan-no-future/shot2.png',
-        '/project-screenshots/no-plan-no-future/shot3.png',
-        '/project-screenshots/no-plan-no-future/shot4.png'
+        '/project-screenshots/no-plan-no-future/Shot1.png',
+        '/project-screenshots/no-plan-no-future/Shot2.png',
+        '/project-screenshots/no-plan-no-future/Shot3.png',
+        '/project-screenshots/no-plan-no-future/Shot4.png'
       ],
       longDescription:
         'No Plan No Future is a comprehensive lifestyle management application designed to help users take control of their daily routines, tasks, fitness goals, and overall productivity. The app combines intuitive scheduling with powerful analytics to provide users with insights into their habits and progress. Built with modern web technologies, it offers a seamless experience across all devices with real-time synchronization and offline capabilities.',
@@ -99,10 +99,10 @@ const Projects: React.FC = () => {
         'Real-time data validation pipeline',
         'Risk management and parameter optimization'
       ],
-      coverImage: '/project-screenshots/algorithmic-trading/cover.png',
+      coverImage: '/project-screenshots/algorithmic-trading/Cover.png',
       screenshots: [
-        '/project-screenshots/algorithmic-trading/shot1.png',
-        '/project-screenshots/algorithmic-trading/shot2.png'
+        '/project-screenshots/algorithmic-trading/Shot1.png',
+        '/project-screenshots/algorithmic-trading/Shot2.png'
       ],
       video: '/project-videos/trading-demo.mp4',
       longDescription:
@@ -131,14 +131,14 @@ const Projects: React.FC = () => {
       githubLink: 'https://github.com/tushitgrg/2800-202510-DTC07',
       demoLink: 'https://scholist.vercel.app',
       highlights: ['Resource sharing', 'Timetable integration', 'Clean student-friendly UI'],
-      coverImage: '/project-screenshots/scholist/cover.png',
+      coverImage: '/project-screenshots/scholist/Cover.png',
       screenshots: [
-        '/project-screenshots/scholist/shot1.png',
-        '/project-screenshots/scholist/shot2.png',
-        '/project-screenshots/scholist/shot3.png',
-        '/project-screenshots/scholist/shot4.png',
-        '/project-screenshots/scholist/shot5.png',
-        '/project-screenshots/scholist/shot6.png'
+        '/project-screenshots/scholist/Shot1.png',
+        '/project-screenshots/scholist/Shot2.png',
+        '/project-screenshots/scholist/Shot3.png',
+        '/project-screenshots/scholist/Shot4.png',
+        '/project-screenshots/scholist/Shot5.png',
+        '/project-screenshots/scholist/Shot6.png'
       ],
       youtubeId: 'aUjmIdcZkuk',
       longDescription:
@@ -157,6 +157,62 @@ const Projects: React.FC = () => {
       author: 'group'
     },
     {
+      id: 'audio-stimuli-experiment',
+      title: 'Audio Stimuli Experiment',
+      tagline: 'Web app for sound experiments with audio stimuli and response collection',
+      techStack: ['HTML', 'JavaScript', 'Python', 'HTTP Server', 'CSV'],
+      description:
+        'A freelance web application that serves experiment forms and audio stimuli, with a Python backend for data collection and CSV storage.',
+      highlights: [
+        'Experiment form interface',
+        'Audio stimuli playback and tracking',
+        'Backend server for response storage'
+      ],
+      coverImage: '/project-screenshots/audio-stimuli-experiment/Cover.png',
+      screenshots: [],
+      longDescription:
+        'A freelance project providing a web-based frontend for research experiments. The application delivers form-based questionnaires and audio stimuli to participants, with a Python server backend that records responses to CSV. Designed for easy deployment and local network use.',
+      features: [
+        'Structured experiment flow with form steps',
+        'Audio stimulus playback and file management',
+        'Server-side response logging to CSV',
+        'Local or LAN deployment support'
+      ],
+      date: '2025-01-01',
+      category: 'Freelance',
+      type: 'freelance',
+      author: 'personal'
+    },
+    {
+      id: 'periwinkle-counselling-website',
+      title: 'Periwinkle Counselling Website',
+      tagline: 'Freelance personal website for a counselling practice (teens and adults, virtual counselling in BC)',
+      techStack: ['HTML', 'CSS', 'JavaScript', 'Google Fonts'],
+      description:
+        'A static, responsive website for Periwinkle Counselling: virtual counselling for teens and adults in Vancouver and across British Columbia. Sections include hero, about, services, FAQs, insights, and contact.',
+      highlights: [
+        'Clean layout with custom CSS and soft periwinkle palette',
+        'Smooth scroll navigation and hero with cursor effect',
+        'Sections for services, approach, and booking'
+      ],
+      coverImage: '/project-screenshots/periwinkle-counselling-website/Cover.png',
+      screenshots: ['/project-screenshots/periwinkle-counselling-website/Shot1.png'],
+      longDescription:
+        'Freelance project: a professional one-page style website for a registered social worker and counsellor (Hoi Shuen Kasey Chung, MSW, RSW). The site presents Periwinkle Counselling with a calm, accessible design: hero with tagline, approach and focus areas, about section, services, FAQs, insights (blog), and contact/book. Built with vanilla HTML, CSS, and light JavaScript for interactions. Responsive and ready for content updates.',
+      features: [
+        'Sticky navigation with smooth scroll to sections',
+        'Hero section with hover effect and call-to-action',
+        'About and approach blocks with placeholder content',
+        'Services and FAQs sections',
+        'Insights (blog) and Connect (contact) areas',
+        'English with placeholder links for 繁體 / 简体'
+      ],
+      date: '2025-01-01',
+      category: 'Freelance',
+      type: 'freelance',
+      author: 'personal'
+    },
+    {
       id: 'personal-page',
       title: 'Personal Page',
       tagline: 'Pixel-art interactive portfolio with retro game aesthetic and accessibility-focused design',
@@ -170,10 +226,10 @@ const Projects: React.FC = () => {
         'Accessibility features (keyboard & screen reader support)',
         'Project showcase with interactive modals'
       ],
-      coverImage: '/project-screenshots/personal-page/cover.png',
+      coverImage: '/project-screenshots/personal-page/Cover.png',
       screenshots: [
-        '/project-screenshots/personal-page/shot1.png',
-        '/project-screenshots/personal-page/shot2.png'
+        '/project-screenshots/personal-page/Shot1.png',
+        '/project-screenshots/personal-page/Shot2.png'
       ],
       video: '/project-videos/personal-page-demo.mp4',
       longDescription:
@@ -205,9 +261,9 @@ const Projects: React.FC = () => {
         'Optional co-op filtering',
         'Discord notifications with de-duplication'
       ],
-      coverImage: '/project-screenshots/e-jobs-scraper/cover.png',
+      coverImage: '/project-screenshots/e-jobs-scraper/Cover.png',
       screenshots: [
-        '/project-screenshots/e-jobs-scraper/shot1.png'
+        '/project-screenshots/e-jobs-scraper/Shot1.png'
       ],
       video: '/project-videos/scraper-demo.mp4',
       longDescription:
@@ -225,8 +281,61 @@ const Projects: React.FC = () => {
       category: 'Automation & Scripting',
       type: 'additional',
       author: 'personal'
+    },
+    {
+      id: 'eink-no-plan-no-future',
+      title: 'Hardware Add-on for No Plan No Future',
+      tagline: 'E-Ink display integration for calendar and schedule views',
+      techStack: ['Python', 'Raspberry Pi', 'E-Paper / E-Ink', 'REST API'],
+      description:
+        'A hardware add-on that connects an E-Ink display to the No Plan No Future app, showing weekly, monthly, or yearly calendar views with automatic refresh.',
+      highlights: [
+        'Dual-pane and single-pane E-Ink layouts',
+        'Weekly, monthly, and yearly calendar renderers',
+        'API client and auto-update service'
+      ],
+      coverImage: '/project-screenshots/eink-no-plan-no-future/Cover.png',
+      screenshots: [],
+      longDescription:
+        'This project extends the No Plan No Future lifestyle app with an optional E-Ink display. A Python service runs on Raspberry Pi (or similar) and fetches schedule data from the app API, then renders weekly, monthly, or yearly views to an E-Paper display. Includes multiple layout prototypes and an auto-update timer for low-power always-on use.',
+      features: [
+        'Multiple renderers: weekly, monthly, yearly, dual-pane',
+        'API client for No Plan No Future backend',
+        'Systemd timer for scheduled refresh',
+        'Designed for Raspberry Pi and E-Ink displays'
+      ],
+      date: '2025-09-01',
+      category: 'Embedded & Hardware',
+      type: 'additional',
+      author: 'personal'
+    },
+    {
+      id: 'whos-my-sugar-baby',
+      title: 'WhosMySugarBaby',
+      tagline: 'A small tool for calculating split charges from receipts',
+      techStack: ['Python', 'Discord', 'Google Gemini API', 'Receipt OCR'],
+      description:
+        'A Discord bot that analyzes receipt images with Gemini AI and calculates bill splits among friends or roommates with equal, percentage, or item-level splits.',
+      highlights: [
+        'Receipt image analysis via Gemini Vision',
+        'Equal, percentage, and item-by-item split options',
+        'Session management and split history'
+      ],
+      coverImage: '/project-screenshots/whos-my-sugar-baby/Cover.png',
+      screenshots: [],
+      longDescription:
+        'WhosMySugarBaby is a lightweight Discord bot that simplifies splitting bills. Users send a receipt image; the bot uses Google Gemini Vision to extract items and prices, then supports equal split, custom percentage split, or item-by-item assignment. Tax is handled proportionally. Includes session confirmation and rate limiting.',
+      features: [
+        'Receipt OCR and item extraction with Gemini API',
+        'Equal split, percentage split, and item assignment',
+        'Proportional tax distribution',
+        'Per-channel session and last 5 splits history'
+      ],
+      date: '2025-08-01',
+      category: 'Automation & Scripting',
+      type: 'additional',
+      author: 'personal'
     }
-    
   ];
 
   const formatDate = (dateString: string) => {
@@ -238,6 +347,7 @@ const Projects: React.FC = () => {
   };
 
   const mainProjects = projects.filter((project) => project.type === 'main');
+  const freelanceProjects = projects.filter((project) => project.type === 'freelance');
   const additionalProjects = projects.filter((project) => project.type === 'additional');
 
   return (
@@ -354,6 +464,18 @@ const Projects: React.FC = () => {
               </ul>
             </div>
 
+            {/* Freelance */}
+            <div className="sidebar-section">
+              <h3 className="sidebar-title">Freelance</h3>
+              <ul className="project-list">
+                {freelanceProjects.map((project) => (
+                  <li key={project.id} className="sidebar-project-item">
+                    <span className="sidebar-project-title">{project.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Additional Projects */}
             <div className="sidebar-section">
               <h3 className="sidebar-title">Additional Projects</h3>
@@ -436,22 +558,15 @@ const Projects: React.FC = () => {
                     </div>
                   ) : selectedProject.coverImage ? (
                     <img
-                      src={asset(selectedProject.coverImage!)}
+                      src={asset(selectedProject.coverImage)}
                       alt={`${selectedProject.title} cover`}
-                      className="screenshot-img"  /* keep 4:3 for hero/cover */
-                      loading="lazy"
-                    />
-                  ) : selectedProject.screenshots?.[0] ? (
-                    <img
-                      src={asset(selectedProject.screenshots[0])}
-                      alt={`${selectedProject.title} screenshot`}
-                      className="screenshot-img"  /* still 4:3 in hero area */
+                      className="screenshot-img"
                       loading="lazy"
                     />
                   ) : (
                     <div className="video-placeholder">
                       <ImageIcon size={40} />
-                      <span>No media</span>
+                      <span>No cover image</span>
                     </div>
                   )}
                 </div>
@@ -482,32 +597,24 @@ const Projects: React.FC = () => {
                 </ul>
               </div>
 
-              {/* Screenshots Gallery (16:9 only here) */}
-              <div className="project-section">
-                <h3>Project Screenshots</h3>
-                <div className="screenshots-grid">
-                  {(selectedProject.screenshots?.length
-                    ? selectedProject.screenshots
-                    : [null, null, null, null]
-                  ).map((src, idx) => (
-                    <div key={idx} className="screenshot-item">
-                      {src ? (
+              {/* Screenshots Gallery: only show when screenshots exist */}
+              {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
+                <div className="project-section">
+                  <h3>Project Screenshots</h3>
+                  <div className="screenshots-grid">
+                    {selectedProject.screenshots.map((src, idx) => (
+                      <div key={idx} className="screenshot-item">
                         <img
                           src={asset(src)}
                           alt={`${selectedProject.title} screenshot ${idx + 1}`}
-                          className="gallery-img"   /* 16:9 for gallery only */
+                          className="gallery-img"
                           loading="lazy"
                         />
-                      ) : (
-                        <div className="gallery-placeholder">  {/* 16:9 placeholder */}
-                          <ImageIcon size={40} />
-                          <span>Screenshot {idx + 1}</span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
